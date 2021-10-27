@@ -1,0 +1,57 @@
+{
+  "generator-jhipster": {
+    "skipJhipsterDependencies": true,
+    "blueprints": [
+      {
+        "name": "generator-jhipster-agilekip",
+        "version": "0.0.11"
+      }
+    ],
+    "otherModules": [
+      {
+        "name": "generator-jhipster-agilekip",
+        "version": "0.0.11"
+      }
+    ],
+    "applicationType": "monolith",
+    "baseName": "travelPlan",
+    "jhipsterVersion": "7.0.1",
+    "skipClient": false,
+    "skipServer": false,
+    "skipUserManagement": false,
+    "skipCheckLengthOfIdentifier": false,
+    "skipFakeData": false,
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "testFrameworks": [],
+    "pages": [],
+    "creationTimestamp": 1635206021592,
+    "serviceDiscoveryType": false,
+    "reactive": false,
+    "authenticationType": "jwt",
+    "packageName": "com.mycompany.myapp",
+    "serverPort": "8080",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "prodDatabaseType": "postgresql",
+    "buildTool": "maven",
+    "serverSideOptions": [],
+    "websocket": false,
+    "searchEngine": false,
+    "messageBroker": false,
+    "enableSwaggerCodegen": false,
+    "clientFramework": "vue",
+    "withAdminUi": true,
+    "clientTheme": "none",
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "packageFolder": "com/mycompany/myapp",
+    "jwtSecretKey": "ZDEzZmUwMThiYmE0OGJmNjVhNzQzMzAwZTdlOTZiZGE2ODc2YmIwNjBiMDE1MWFkODM5MDVjOGQ1YmRhZWYzZjUwOTRiOTg2Y2JkNWE5ZmE2MjMxNTFiNzZkNmIwNDYzZTVjODIyNjg0Y2VjZTJkODhjODk0ZGU1YzZiZGJmNDg=",
+    "clientPackageManager": "npm",
+    "clientThemeVariant": "",
+    "languages": ["en"]
+  }
+}
