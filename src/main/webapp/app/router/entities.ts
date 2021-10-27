@@ -10,6 +10,8 @@ const TravelPlanDetails = () => import('@/entities/travel-plan/travel-plan-detai
 const TravelPlanProcessDetails = () => import('@/entities/travel-plan-process/travel-plan-process-details.vue');
 // prettier-ignore
 const TravelPlanProcessList = () => import('@/entities/travel-plan-process/travel-plan-process-list.vue');
+// prettier-ignore
+const TravelPlanStartFormInit = () => import('@/entities/travel-plan-process/travel-plan-start-form-init.vue');
 // jhipster-needle-add-entity-to-router-import - JHipster will import entities to the router here
 
 export default [
@@ -35,6 +37,12 @@ export default [
     path: '/process-definition/TravelPlanProcess/instances',
     name: 'TravelPlanProcessList',
     component: TravelPlanProcessList,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/process-definition/TravelPlanProcess/init',
+    name: 'TravelPlanStartFormInit',
+    component: TravelPlanStartFormInit,
     meta: { authorities: [Authority.USER] },
   },
   // jhipster-needle-add-entity-to-router - JHipster will add entities to the router here
