@@ -4,13 +4,13 @@
     "blueprints": [
       {
         "name": "generator-jhipster-agilekip",
-        "version": "0.0.11"
+        "version": "0.0.0"
       }
     ],
     "otherModules": [
       {
         "name": "generator-jhipster-agilekip",
-        "version": "0.0.11"
+        "version": "0.0.0"
       }
     ],
     "applicationType": "monolith",
@@ -52,6 +52,7 @@
     "jwtSecretKey": "ZDEzZmUwMThiYmE0OGJmNjVhNzQzMzAwZTdlOTZiZGE2ODc2YmIwNjBiMDE1MWFkODM5MDVjOGQ1YmRhZWYzZjUwOTRiOTg2Y2JkNWE5ZmE2MjMxNTFiNzZkNmIwNDYzZTVjODIyNjg0Y2VjZTJkODhjODk0ZGU1YzZiZGJmNDg=",
     "clientPackageManager": "npm",
     "clientThemeVariant": "",
-    "languages": ["en"]
+    "languages": ["en"],
+    "entities": ["TravelPlan"]
   }
 }
