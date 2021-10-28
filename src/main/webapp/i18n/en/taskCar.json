@@ -1,0 +1,28 @@
+{
+  "travelPlanApp": {
+    "taskCar": {
+      "home": {
+        "title": "Task Cars",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Task Car",
+        "createOrEditLabel": "Create or edit a Task Car",
+        "notFound": "No Task Cars found"
+      },
+      "created": "A new Task Car is created with identifier {{ param }}",
+      "updated": "A Task Car is updated with identifier {{ param }}",
+      "deleted": "A Task Car is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Task Car {{ id }}?"
+      },
+      "detail": {
+        "title": "Task Car"
+      },
+      "id": "ID",
+      "name": "Name",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "carCompanyName": "Car Company Name",
+      "carBookingNumber": "Car Booking Number"
+    }
+  }
+}

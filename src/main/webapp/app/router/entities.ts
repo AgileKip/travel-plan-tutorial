@@ -20,6 +20,10 @@ const TravelPlanProcess_TaskFlightExecute = () => import('@/entities/travel-plan
 const TravelPlanProcess_TaskHotelDetails = () => import('@/entities/travel-plan-process/task-hotel/task-hotel-details.vue');
 // prettier-ignore
 const TravelPlanProcess_TaskHotelExecute = () => import('@/entities/travel-plan-process/task-hotel/task-hotel-execute.vue');
+// prettier-ignore
+const TravelPlanProcess_TaskCarDetails = () => import('@/entities/travel-plan-process/task-car/task-car-details.vue');
+// prettier-ignore
+const TravelPlanProcess_TaskCarExecute = () => import('@/entities/travel-plan-process/task-car/task-car-execute.vue');
 // jhipster-needle-add-entity-to-router-import - JHipster will import entities to the router here
 
 export default [
@@ -75,6 +79,18 @@ export default [
     path: '/process-definition/TravelPlanProcess/task/TaskHotel/:taskInstanceId/execute',
     name: 'TravelPlanProcess_TaskHotelExecute',
     component: TravelPlanProcess_TaskHotelExecute,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/process-definition/TravelPlanProcess/task/TaskCar/:taskInstanceId/view',
+    name: 'TravelPlanProcess_TaskCarDetails',
+    component: TravelPlanProcess_TaskCarDetails,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/process-definition/TravelPlanProcess/task/TaskCar/:taskInstanceId/execute',
+    name: 'TravelPlanProcess_TaskCarExecute',
+    component: TravelPlanProcess_TaskCarExecute,
     meta: { authorities: [Authority.USER] },
   },
   // jhipster-needle-add-entity-to-router - JHipster will add entities to the router here
