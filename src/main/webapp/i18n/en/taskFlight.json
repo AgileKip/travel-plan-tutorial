@@ -1,0 +1,28 @@
+{
+  "travelPlanApp": {
+    "taskFlight": {
+      "home": {
+        "title": "Task Flights",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Task Flight",
+        "createOrEditLabel": "Create or edit a Task Flight",
+        "notFound": "No Task Flights found"
+      },
+      "created": "A new Task Flight is created with identifier {{ param }}",
+      "updated": "A Task Flight is updated with identifier {{ param }}",
+      "deleted": "A Task Flight is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Task Flight {{ id }}?"
+      },
+      "detail": {
+        "title": "Task Flight"
+      },
+      "id": "ID",
+      "name": "Name",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "airlineCompanyName": "Airline Company Name",
+      "airlineTicketNumber": "Airline Ticket Number"
+    }
+  }
+}
