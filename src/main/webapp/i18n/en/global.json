@@ -16,6 +16,7 @@
         "travelPlanProcess": "Travel Plan Process",
         "travelPlanStartForm": "Travel Plan Start Form",
         "taskFlight": "Task Flight",
+        "taskHotel": "Task Hotel",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {
