@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.6.0">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.6.0">
   <bpmn:process id="TravelPlanProcess" name="Travel Plan Process" isExecutable="true">
     <bpmn:documentation>**Planning a trip can feel like both the most exciting AND the most overwhelming part of travel.**
 Sure, creating a Pinterest board full of gorgeous pictures is fun, but then you start trying to figure out the actual logistics and it hits you … oh god, this is SO MUCH WORK.
@@ -60,10 +60,9 @@ There are tricks and tips you can use to find the best room rates so you can enj
 1. Sign up for a hotel's loyalty programs.
 1. Sign up for alerts on price drops.
 1. Use coupon codes.</bpmn:documentation>
-      <bpmn:incoming>Flow_01c9z2w</bpmn:incoming>
+      <bpmn:incoming>Flow_more_than_1day_trip</bpmn:incoming>
       <bpmn:outgoing>Flow_0bkmq64</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:sequenceFlow id="SequenceFlow_1o5n6g7" sourceRef="TaskFlight" targetRef="Gateway_0lny8bn" />
     <bpmn:userTask id="TaskFlight" name="Choose flight">
       <bpmn:documentation># Buying the Flight Tickets
 
@@ -82,92 +81,108 @@ Airfare can easily be the largest expense of your trip. Expensive plane tickets 
 1. Use Award Miles
 1. Use Your Credit Card Travel Credits</bpmn:documentation>
       <bpmn:incoming>SequenceFlow_125v9sm</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1o5n6g7</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1xkltyu</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:sequenceFlow id="Flow_0bkmq64" sourceRef="TaskHotel" targetRef="Gateway_1eqzs41" />
     <bpmn:exclusiveGateway id="Gateway_0lny8bn">
-      <bpmn:incoming>SequenceFlow_1o5n6g7</bpmn:incoming>
-      <bpmn:outgoing>Flow_01c9z2w</bpmn:outgoing>
-      <bpmn:outgoing>Flow_1rqwfv2</bpmn:outgoing>
+      <bpmn:incoming>Flow_1ylk728</bpmn:incoming>
+      <bpmn:outgoing>Flow_more_than_1day_trip</bpmn:outgoing>
+      <bpmn:outgoing>Flow_same_day_trip</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:sequenceFlow id="Flow_01c9z2w" sourceRef="Gateway_0lny8bn" targetRef="TaskHotel">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${processInstance.travelPlan.endDate &gt; processInstance.travelPlan.startDate}</bpmn:conditionExpression>
+    <bpmn:sequenceFlow id="Flow_more_than_1day_trip" name="more than 1-day trip" sourceRef="Gateway_0lny8bn" targetRef="TaskHotel">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${moreThan1DayTrip}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:exclusiveGateway id="Gateway_1eqzs41">
       <bpmn:incoming>Flow_0bkmq64</bpmn:incoming>
-      <bpmn:incoming>Flow_1rqwfv2</bpmn:incoming>
+      <bpmn:incoming>Flow_same_day_trip</bpmn:incoming>
       <bpmn:outgoing>Flow_0ndpn92</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_0ndpn92" sourceRef="Gateway_1eqzs41" targetRef="TaskCar" />
     <bpmn:sequenceFlow id="Flow_16lqiue" sourceRef="TaskCar" targetRef="EndEvent_1x9cyv3" />
-    <bpmn:sequenceFlow id="Flow_1rqwfv2" sourceRef="Gateway_0lny8bn" targetRef="Gateway_1eqzs41">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${! (processInstance.travelPlan.endDate &gt; processInstance.travelPlan.startDate) }</bpmn:conditionExpression>
+    <bpmn:sequenceFlow id="Flow_same_day_trip" name="same day trip" sourceRef="Gateway_0lny8bn" targetRef="Gateway_1eqzs41">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${!moreThan1DayTrip}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1xkltyu" sourceRef="TaskFlight" targetRef="CalculateSameDayTrip" />
+    <bpmn:serviceTask id="CalculateSameDayTrip" name="Calculate same day trip" camunda:delegateExpression="${calculateSameDayTripDelegate}">
+      <bpmn:incoming>Flow_1xkltyu</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ylk728</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:sequenceFlow id="Flow_1ylk728" sourceRef="CalculateSameDayTrip" targetRef="Gateway_0lny8bn" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="TravelPlanProcess">
-      <bpmndi:BPMNEdge id="SequenceFlow_1o5n6g7_di" bpmnElement="SequenceFlow_1o5n6g7">
-        <di:waypoint x="390" y="149" />
-        <di:waypoint x="445" y="149" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="374" y="124" width="0" height="0" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_125v9sm_di" bpmnElement="SequenceFlow_125v9sm">
-        <di:waypoint x="208" y="149" />
-        <di:waypoint x="290" y="149" />
+        <di:waypoint x="188" y="149" />
+        <di:waypoint x="220" y="149" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="162" y="134" width="0" height="0" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0bkmq64_di" bpmnElement="Flow_0bkmq64">
-        <di:waypoint x="660" y="149" />
-        <di:waypoint x="725" y="149" />
+        <di:waypoint x="760" y="149" />
+        <di:waypoint x="815" y="149" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_01c9z2w_di" bpmnElement="Flow_01c9z2w">
-        <di:waypoint x="495" y="149" />
-        <di:waypoint x="560" y="149" />
+      <bpmndi:BPMNEdge id="Flow_01c9z2w_di" bpmnElement="Flow_more_than_1day_trip">
+        <di:waypoint x="565" y="149" />
+        <di:waypoint x="660" y="149" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="575" y="116" width="81" height="27" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0ndpn92_di" bpmnElement="Flow_0ndpn92">
-        <di:waypoint x="775" y="149" />
-        <di:waypoint x="830" y="149" />
+        <di:waypoint x="865" y="149" />
+        <di:waypoint x="930" y="149" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_16lqiue_di" bpmnElement="Flow_16lqiue">
-        <di:waypoint x="930" y="149" />
-        <di:waypoint x="1062" y="149" />
+        <di:waypoint x="1030" y="149" />
+        <di:waypoint x="1082" y="149" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1rqwfv2_di" bpmnElement="Flow_1rqwfv2">
-        <di:waypoint x="470" y="174" />
-        <di:waypoint x="470" y="240" />
-        <di:waypoint x="750" y="240" />
-        <di:waypoint x="750" y="174" />
+      <bpmndi:BPMNEdge id="Flow_1rqwfv2_di" bpmnElement="Flow_same_day_trip">
+        <di:waypoint x="540" y="174" />
+        <di:waypoint x="540" y="240" />
+        <di:waypoint x="840" y="240" />
+        <di:waypoint x="840" y="174" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="658" y="222" width="67" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1xkltyu_di" bpmnElement="Flow_1xkltyu">
+        <di:waypoint x="320" y="149" />
+        <di:waypoint x="370" y="149" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ylk728_di" bpmnElement="Flow_1ylk728">
+        <di:waypoint x="470" y="149" />
+        <di:waypoint x="515" y="149" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Gateway_0lny8bn_di" bpmnElement="Gateway_0lny8bn" isMarkerVisible="true">
+        <dc:Bounds x="515" y="124" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_1v2u5s7_di" bpmnElement="TaskHotel">
+        <dc:Bounds x="660" y="109" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_1eqzs41_di" bpmnElement="Gateway_1eqzs41" isMarkerVisible="true">
+        <dc:Bounds x="815" y="124" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_09smfnk_di" bpmnElement="TaskCar">
+        <dc:Bounds x="930" y="109" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_1x9cyv3_di" bpmnElement="EndEvent_1x9cyv3">
+        <dc:Bounds x="1082" y="131" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="882" y="167" width="0" height="0" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="172" y="131" width="36" height="36" />
+        <dc:Bounds x="152" y="131" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="96" y="167" width="0" height="0" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1qv27z0_di" bpmnElement="TaskFlight">
-        <dc:Bounds x="290" y="109" width="100" height="80" />
+        <dc:Bounds x="220" y="109" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="UserTask_1v2u5s7_di" bpmnElement="TaskHotel">
-        <dc:Bounds x="560" y="109" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_0lny8bn_di" bpmnElement="Gateway_0lny8bn" isMarkerVisible="true">
-        <dc:Bounds x="445" y="124" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="UserTask_09smfnk_di" bpmnElement="TaskCar">
-        <dc:Bounds x="830" y="109" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="EndEvent_1x9cyv3_di" bpmnElement="EndEvent_1x9cyv3">
-        <dc:Bounds x="1062" y="131" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="882" y="167" width="0" height="0" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_1eqzs41_di" bpmnElement="Gateway_1eqzs41" isMarkerVisible="true">
-        <dc:Bounds x="725" y="124" width="50" height="50" />
+      <bpmndi:BPMNShape id="Activity_070o0k1_di" bpmnElement="CalculateSameDayTrip">
+        <dc:Bounds x="370" y="109" width="100" height="80" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
