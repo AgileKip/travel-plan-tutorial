@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.11.1">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.6.0">
   <bpmn:process id="TravelPlanProcess" name="Travel Plan Process" isExecutable="true">
     <bpmn:documentation>**Planning a trip can feel like both the most exciting AND the most overwhelming part of travel.**
 Sure, creating a Pinterest board full of gorgeous pictures is fun, but then you start trying to figure out the actual logistics and it hits you … oh god, this is SO MUCH WORK.
@@ -39,13 +39,12 @@ Many folks might pack up their own car for such an adventure. But if you want to
 1. Hit the gas on credit card category bonuses
 1. Ensure you’re insured
 1. Think about roadside assistance</bpmn:documentation>
-      <bpmn:incoming>SequenceFlow_1m0sj2x</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_0mapilh</bpmn:outgoing>
+      <bpmn:incoming>Flow_0ndpn92</bpmn:incoming>
+      <bpmn:outgoing>Flow_16lqiue</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:endEvent id="EndEvent_1x9cyv3">
-      <bpmn:incoming>SequenceFlow_0mapilh</bpmn:incoming>
+      <bpmn:incoming>Flow_16lqiue</bpmn:incoming>
     </bpmn:endEvent>
-    <bpmn:sequenceFlow id="SequenceFlow_0mapilh" sourceRef="TaskCar" targetRef="EndEvent_1x9cyv3" />
     <bpmn:sequenceFlow id="SequenceFlow_125v9sm" sourceRef="StartEvent_1" targetRef="TaskFlight" />
     <bpmn:userTask id="TaskHotel" name="Book a hotel">
       <bpmn:documentation># Booking your accommodation
@@ -61,11 +60,10 @@ There are tricks and tips you can use to find the best room rates so you can enj
 1. Sign up for a hotel's loyalty programs.
 1. Sign up for alerts on price drops.
 1. Use coupon codes.</bpmn:documentation>
-      <bpmn:incoming>SequenceFlow_1o5n6g7</bpmn:incoming>
-      <bpmn:outgoing>SequenceFlow_1m0sj2x</bpmn:outgoing>
+      <bpmn:incoming>Flow_01c9z2w</bpmn:incoming>
+      <bpmn:outgoing>Flow_0bkmq64</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:sequenceFlow id="SequenceFlow_1o5n6g7" sourceRef="TaskFlight" targetRef="TaskHotel" />
-    <bpmn:sequenceFlow id="SequenceFlow_1m0sj2x" sourceRef="TaskHotel" targetRef="TaskCar" />
+    <bpmn:sequenceFlow id="SequenceFlow_1o5n6g7" sourceRef="TaskFlight" targetRef="Gateway_0lny8bn" />
     <bpmn:userTask id="TaskFlight" name="Choose flight">
       <bpmn:documentation># Buying the Flight Tickets
 
@@ -86,36 +84,63 @@ Airfare can easily be the largest expense of your trip. Expensive plane tickets 
       <bpmn:incoming>SequenceFlow_125v9sm</bpmn:incoming>
       <bpmn:outgoing>SequenceFlow_1o5n6g7</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0bkmq64" sourceRef="TaskHotel" targetRef="Gateway_1eqzs41" />
+    <bpmn:exclusiveGateway id="Gateway_0lny8bn">
+      <bpmn:incoming>SequenceFlow_1o5n6g7</bpmn:incoming>
+      <bpmn:outgoing>Flow_01c9z2w</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1rqwfv2</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_01c9z2w" sourceRef="Gateway_0lny8bn" targetRef="TaskHotel">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${processInstance.travelPlan.endDate &gt; processInstance.travelPlan.startDate}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:exclusiveGateway id="Gateway_1eqzs41">
+      <bpmn:incoming>Flow_0bkmq64</bpmn:incoming>
+      <bpmn:incoming>Flow_1rqwfv2</bpmn:incoming>
+      <bpmn:outgoing>Flow_0ndpn92</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_0ndpn92" sourceRef="Gateway_1eqzs41" targetRef="TaskCar" />
+    <bpmn:sequenceFlow id="Flow_16lqiue" sourceRef="TaskCar" targetRef="EndEvent_1x9cyv3" />
+    <bpmn:sequenceFlow id="Flow_1rqwfv2" sourceRef="Gateway_0lny8bn" targetRef="Gateway_1eqzs41">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${! (processInstance.travelPlan.endDate &gt; processInstance.travelPlan.startDate) }</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="TravelPlanProcess">
-      <bpmndi:BPMNEdge id="SequenceFlow_1m0sj2x_di" bpmnElement="SequenceFlow_1m0sj2x">
-        <di:waypoint x="510" y="149" />
-        <di:waypoint x="560" y="149" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="597" y="124" width="0" height="0" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_1o5n6g7_di" bpmnElement="SequenceFlow_1o5n6g7">
-        <di:waypoint x="360" y="149" />
-        <di:waypoint x="410" y="149" />
+        <di:waypoint x="390" y="149" />
+        <di:waypoint x="445" y="149" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="374" y="124" width="0" height="0" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_125v9sm_di" bpmnElement="SequenceFlow_125v9sm">
         <di:waypoint x="208" y="149" />
-        <di:waypoint x="260" y="149" />
+        <di:waypoint x="290" y="149" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="162" y="134" width="0" height="0" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="SequenceFlow_0mapilh_di" bpmnElement="SequenceFlow_0mapilh">
+      <bpmndi:BPMNEdge id="Flow_0bkmq64_di" bpmnElement="Flow_0bkmq64">
         <di:waypoint x="660" y="149" />
-        <di:waypoint x="712" y="149" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="810" y="134" width="0" height="0" />
-        </bpmndi:BPMNLabel>
+        <di:waypoint x="725" y="149" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_01c9z2w_di" bpmnElement="Flow_01c9z2w">
+        <di:waypoint x="495" y="149" />
+        <di:waypoint x="560" y="149" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0ndpn92_di" bpmnElement="Flow_0ndpn92">
+        <di:waypoint x="775" y="149" />
+        <di:waypoint x="830" y="149" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_16lqiue_di" bpmnElement="Flow_16lqiue">
+        <di:waypoint x="930" y="149" />
+        <di:waypoint x="1062" y="149" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1rqwfv2_di" bpmnElement="Flow_1rqwfv2">
+        <di:waypoint x="470" y="174" />
+        <di:waypoint x="470" y="240" />
+        <di:waypoint x="750" y="240" />
+        <di:waypoint x="750" y="174" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="172" y="131" width="36" height="36" />
@@ -123,20 +148,26 @@ Airfare can easily be the largest expense of your trip. Expensive plane tickets 
           <dc:Bounds x="96" y="167" width="0" height="0" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="UserTask_1v2u5s7_di" bpmnElement="TaskHotel">
-        <dc:Bounds x="410" y="109" width="100" height="80" />
+      <bpmndi:BPMNShape id="Activity_1qv27z0_di" bpmnElement="TaskFlight">
+        <dc:Bounds x="290" y="109" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="UserTask_09smfnk_di" bpmnElement="TaskCar">
+      <bpmndi:BPMNShape id="UserTask_1v2u5s7_di" bpmnElement="TaskHotel">
         <dc:Bounds x="560" y="109" width="100" height="80" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0lny8bn_di" bpmnElement="Gateway_0lny8bn" isMarkerVisible="true">
+        <dc:Bounds x="445" y="124" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="UserTask_09smfnk_di" bpmnElement="TaskCar">
+        <dc:Bounds x="830" y="109" width="100" height="80" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="EndEvent_1x9cyv3_di" bpmnElement="EndEvent_1x9cyv3">
-        <dc:Bounds x="712" y="131" width="36" height="36" />
+        <dc:Bounds x="1062" y="131" width="36" height="36" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="882" y="167" width="0" height="0" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1qv27z0_di" bpmnElement="TaskFlight">
-        <dc:Bounds x="260" y="109" width="100" height="80" />
+      <bpmndi:BPMNShape id="Gateway_1eqzs41_di" bpmnElement="Gateway_1eqzs41" isMarkerVisible="true">
+        <dc:Bounds x="725" y="124" width="50" height="50" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
