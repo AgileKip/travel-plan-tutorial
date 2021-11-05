@@ -72,7 +72,7 @@ public class TaskCarService {
         TravelPlanDTO travelPlanDTO = travelPlanService
             .findOne(taskCarContext.getTravelPlanProcess().getTravelPlan().getId())
             .orElseThrow();
-        travelPlanDTO.setName(taskCarContext.getTravelPlanProcess().getTravelPlan().getName());
+        travelPlanDTO.setTravelName(taskCarContext.getTravelPlanProcess().getTravelPlan().getTravelName());
         travelPlanDTO.setStartDate(taskCarContext.getTravelPlanProcess().getTravelPlan().getStartDate());
         travelPlanDTO.setEndDate(taskCarContext.getTravelPlanProcess().getTravelPlan().getEndDate());
         travelPlanDTO.setCarCompanyName(taskCarContext.getTravelPlanProcess().getTravelPlan().getCarCompanyName());

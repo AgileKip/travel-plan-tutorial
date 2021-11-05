@@ -9,18 +9,20 @@
           <template v-slot:body>
             <hr />
             <div class="form-group">
-              <label class="form-control-label" v-text="$t('travelPlanApp.taskHotel.name')" for="task-hotel-name">Name</label>
+              <label class="form-control-label" v-text="$t('travelPlanApp.taskHotel.travelName')" for="task-hotel-travelName"
+                >Travel Name</label
+              >
               <input
                 type="text"
                 class="form-control"
-                name="name"
-                id="task-hotel-name"
-                data-cy="name"
+                name="travelName"
+                id="task-hotel-travelName"
+                data-cy="travelName"
                 :class="{
-                  valid: !$v.taskContext.travelPlanProcess.travelPlan.name.$invalid,
-                  invalid: $v.taskContext.travelPlanProcess.travelPlan.name.$invalid,
+                  valid: !$v.taskContext.travelPlanProcess.travelPlan.travelName.$invalid,
+                  invalid: $v.taskContext.travelPlanProcess.travelPlan.travelName.$invalid,
                 }"
-                v-model="$v.taskContext.travelPlanProcess.travelPlan.name.$model"
+                v-model="$v.taskContext.travelPlanProcess.travelPlan.travelName.$model"
               />
             </div>
             <div class="form-group">

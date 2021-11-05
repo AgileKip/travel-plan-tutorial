@@ -7,7 +7,7 @@ const validations: any = {
   taskContext: {
     travelPlanProcess: {
       travelPlan: {
-        name: {},
+        travelName: {},
         startDate: {},
         endDate: {},
         hotelName: {},

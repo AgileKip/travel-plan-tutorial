@@ -18,7 +18,7 @@
         "title": "Task Car"
       },
       "id": "ID",
-      "name": "Name",
+      "travelName": "Travel Name",
       "startDate": "Start Date",
       "endDate": "End Date",
       "carCompanyName": "Car Company Name",

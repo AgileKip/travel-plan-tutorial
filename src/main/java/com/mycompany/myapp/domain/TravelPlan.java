@@ -21,8 +21,14 @@ public class TravelPlan implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "travel_name")
+    private String travelName;
+
+    @Column(name = "user_name")
+    private String userName;
+
+    @Column(name = "user_email")
+    private String userEmail;
 
     @Column(name = "start_date")
     private LocalDate startDate;
@@ -62,17 +68,43 @@ public class TravelPlan implements Serializable {
         return this;
     }
 
-    public String getName() {
-        return this.name;
+    public String getTravelName() {
+        return this.travelName;
     }
 
-    public TravelPlan name(String name) {
-        this.name = name;
+    public TravelPlan travelName(String travelName) {
+        this.travelName = travelName;
         return this;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTravelName(String travelName) {
+        this.travelName = travelName;
+    }
+
+    public String getUserName() {
+        return this.userName;
+    }
+
+    public TravelPlan userName(String userName) {
+        this.userName = userName;
+        return this;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserEmail() {
+        return this.userEmail;
+    }
+
+    public TravelPlan userEmail(String userEmail) {
+        this.userEmail = userEmail;
+        return this;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
     public LocalDate getStartDate() {
@@ -203,7 +235,9 @@ public class TravelPlan implements Serializable {
     public String toString() {
         return "TravelPlan{" +
             "id=" + getId() +
-            ", name='" + getName() + "'" +
+            ", travelName='" + getTravelName() + "'" +
+            ", userName='" + getUserName() + "'" +
+            ", userEmail='" + getUserEmail() + "'" +
             ", startDate='" + getStartDate() + "'" +
             ", endDate='" + getEndDate() + "'" +
             ", airlineCompanyName='" + getAirlineCompanyName() + "'" +

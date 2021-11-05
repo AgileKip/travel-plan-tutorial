@@ -1,6 +1,8 @@
 export interface ITravelPlan {
   id?: number;
-  name?: string | null;
+  travelName?: string | null;
+  userName?: string | null;
+  userEmail?: string | null;
   startDate?: Date | null;
   endDate?: Date | null;
   airlineCompanyName?: string | null;
@@ -14,7 +16,9 @@ export interface ITravelPlan {
 export class TravelPlan implements ITravelPlan {
   constructor(
     public id?: number,
-    public name?: string | null,
+    public travelName?: string | null,
+    public userName?: string | null,
+    public userEmail?: string | null,
     public startDate?: Date | null,
     public endDate?: Date | null,
     public airlineCompanyName?: string | null,

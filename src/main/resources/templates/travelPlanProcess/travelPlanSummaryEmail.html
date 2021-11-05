@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:lang="${#locale.language}" lang="en">
+  <head>
+    <title>Travel Plan Summary</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  </head>
+  <body>
+    <p>Dear <span th:text="${travelPlan.userName}">userName</span></p>
+    <p>Here is a summary of your travel <b th:text="${travelPlan.travelName}">travelName</b></p>
+    <ul>
+        <li><b>Start</b>: <span th:text="${travelPlan.startDate }"></span></li>
+        <li><b>End</b>: <span th:text="${travelPlan.endDate }"></span></li>
+        <li><b>Flight</b>: <span th:text="${travelPlan.airlineCompanyName}"></span> / <span th:text="${travelPlan.airlineTicketNumber}"></span></li>
+        <li><b>Hotel</b>: <span th:text="${travelPlan.hotelName}"></span> / <span th:text="${travelPlan.hotelBookingNumber}"></span></li>
+        <li><b>Rental Car</b>: <span th:text="${travelPlan.carCompanyName}"></span> / <span th:text="${travelPlan.carBookingNumber}"></span></li>
+    </ul>
+    <p>
+      Regards,
+      <br />
+      <em>AgileKip Team</em>
+    </p>
+  </body>
+</html>

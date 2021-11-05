@@ -4,13 +4,13 @@
     "blueprints": [
       {
         "name": "generator-jhipster-agilekip",
-        "version": "0.0.0"
+        "version": "0.0.11"
       }
     ],
     "otherModules": [
       {
         "name": "generator-jhipster-agilekip",
-        "version": "0.0.0"
+        "version": "0.0.11"
       }
     ],
     "applicationType": "monolith",

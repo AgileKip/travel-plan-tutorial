@@ -18,7 +18,9 @@
         <thead>
           <tr>
             <th scope="row"><span v-text="$t('global.field.id')">ID</span></th>
-            <th scope="row"><span v-text="$t('travelPlanApp.travelPlan.name')">Name</span></th>
+            <th scope="row"><span v-text="$t('travelPlanApp.travelPlan.travelName')">Travel Name</span></th>
+            <th scope="row"><span v-text="$t('travelPlanApp.travelPlan.userName')">User Name</span></th>
+            <th scope="row"><span v-text="$t('travelPlanApp.travelPlan.userEmail')">User Email</span></th>
             <th scope="row"><span v-text="$t('travelPlanApp.travelPlan.startDate')">Start Date</span></th>
             <th scope="row"><span v-text="$t('travelPlanApp.travelPlan.endDate')">End Date</span></th>
             <th scope="row"><span v-text="$t('travelPlanApp.travelPlan.airlineCompanyName')">Airline Company Name</span></th>
@@ -35,7 +37,9 @@
             <td>
               <router-link :to="{ name: 'TravelPlanView', params: { travelPlanId: travelPlan.id } }">{{ travelPlan.id }}</router-link>
             </td>
-            <td>{{ travelPlan.name }}</td>
+            <td>{{ travelPlan.travelName }}</td>
+            <td>{{ travelPlan.userName }}</td>
+            <td>{{ travelPlan.userEmail }}</td>
             <td>{{ travelPlan.startDate }}</td>
             <td>{{ travelPlan.endDate }}</td>
             <td>{{ travelPlan.airlineCompanyName }}</td>

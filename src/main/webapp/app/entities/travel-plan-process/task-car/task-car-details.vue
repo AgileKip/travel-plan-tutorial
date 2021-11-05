@@ -9,15 +9,15 @@
           <template v-slot:body>
             <hr />
             <div class="form-group">
-              <label class="form-control-label" v-text="$t('travelPlanApp.taskCar.name')">name</label>
+              <label class="form-control-label" v-text="$t('travelPlanApp.taskCar.travelName')">travelName</label>
               <input
                 readonly
                 type="text"
                 class="form-control"
-                name="name"
-                id="travel-plan-name"
-                data-cy="name"
-                v-model="taskContext.travelPlanProcess.travelPlan.name"
+                name="travelName"
+                id="travel-plan-travelName"
+                data-cy="travelName"
+                v-model="taskContext.travelPlanProcess.travelPlan.travelName"
               />
             </div>
             <div class="form-group">

@@ -15,20 +15,63 @@
               <hr />
               <div v-if="travelPlanProcess.travelPlan">
                 <div class="form-group">
-                  <label class="form-control-label" v-text="$t('travelPlanApp.travelPlanStartForm.name')" for="travel-plan-start-form-name"
-                    >Name</label
+                  <label
+                    class="form-control-label"
+                    v-text="$t('travelPlanApp.travelPlanStartForm.travelName')"
+                    for="travel-plan-start-form-travelName"
+                    >Travel Name</label
                   >
                   <input
                     type="text"
                     class="form-control"
-                    name="name"
-                    id="travel-plan-start-form-name"
-                    data-cy="name"
+                    name="travelName"
+                    id="travel-plan-start-form-travelName"
+                    data-cy="travelName"
                     :class="{
-                      valid: !$v.travelPlanProcess.travelPlan.name.$invalid,
-                      invalid: $v.travelPlanProcess.travelPlan.name.$invalid,
+                      valid: !$v.travelPlanProcess.travelPlan.travelName.$invalid,
+                      invalid: $v.travelPlanProcess.travelPlan.travelName.$invalid,
                     }"
-                    v-model="$v.travelPlanProcess.travelPlan.name.$model"
+                    v-model="$v.travelPlanProcess.travelPlan.travelName.$model"
+                  />
+                </div>
+                <div class="form-group">
+                  <label
+                    class="form-control-label"
+                    v-text="$t('travelPlanApp.travelPlanStartForm.userName')"
+                    for="travel-plan-start-form-userName"
+                    >User Name</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="userName"
+                    id="travel-plan-start-form-userName"
+                    data-cy="userName"
+                    :class="{
+                      valid: !$v.travelPlanProcess.travelPlan.userName.$invalid,
+                      invalid: $v.travelPlanProcess.travelPlan.userName.$invalid,
+                    }"
+                    v-model="$v.travelPlanProcess.travelPlan.userName.$model"
+                  />
+                </div>
+                <div class="form-group">
+                  <label
+                    class="form-control-label"
+                    v-text="$t('travelPlanApp.travelPlanStartForm.userEmail')"
+                    for="travel-plan-start-form-userEmail"
+                    >User Email</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="userEmail"
+                    id="travel-plan-start-form-userEmail"
+                    data-cy="userEmail"
+                    :class="{
+                      valid: !$v.travelPlanProcess.travelPlan.userEmail.$invalid,
+                      invalid: $v.travelPlanProcess.travelPlan.userEmail.$invalid,
+                    }"
+                    v-model="$v.travelPlanProcess.travelPlan.userEmail.$model"
                   />
                 </div>
                 <div class="form-group">

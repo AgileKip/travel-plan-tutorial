@@ -7,10 +7,22 @@
         </h2>
         <dl class="row jh-entity-details">
           <dt>
-            <span v-text="$t('travelPlanApp.travelPlan.name')">Name</span>
+            <span v-text="$t('travelPlanApp.travelPlan.travelName')">Travel Name</span>
           </dt>
           <dd>
-            <span>{{ travelPlan.name }}</span>
+            <span>{{ travelPlan.travelName }}</span>
+          </dd>
+          <dt>
+            <span v-text="$t('travelPlanApp.travelPlan.userName')">User Name</span>
+          </dt>
+          <dd>
+            <span>{{ travelPlan.userName }}</span>
+          </dd>
+          <dt>
+            <span v-text="$t('travelPlanApp.travelPlan.userEmail')">User Email</span>
+          </dt>
+          <dd>
+            <span>{{ travelPlan.userEmail }}</span>
           </dd>
           <dt>
             <span v-text="$t('travelPlanApp.travelPlan.startDate')">Start Date</span>

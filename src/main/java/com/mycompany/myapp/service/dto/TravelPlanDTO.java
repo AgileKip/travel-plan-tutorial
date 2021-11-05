@@ -11,7 +11,11 @@ public class TravelPlanDTO implements Serializable {
 
     private Long id;
 
-    private String name;
+    private String travelName;
+
+    private String userName;
+
+    private String userEmail;
 
     private LocalDate startDate;
 
@@ -37,12 +41,28 @@ public class TravelPlanDTO implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTravelName() {
+        return travelName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTravelName(String travelName) {
+        this.travelName = travelName;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 
     public LocalDate getStartDate() {
@@ -135,7 +155,9 @@ public class TravelPlanDTO implements Serializable {
     public String toString() {
         return "TravelPlanDTO{" +
             "id=" + getId() +
-            ", name='" + getName() + "'" +
+            ", travelName='" + getTravelName() + "'" +
+            ", userName='" + getUserName() + "'" +
+            ", userEmail='" + getUserEmail() + "'" +
             ", startDate='" + getStartDate() + "'" +
             ", endDate='" + getEndDate() + "'" +
             ", airlineCompanyName='" + getAirlineCompanyName() + "'" +

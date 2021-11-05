@@ -18,7 +18,7 @@
         "title": "Task Hotel"
       },
       "id": "ID",
-      "name": "Name",
+      "travelName": "Travel Name",
       "startDate": "Start Date",
       "endDate": "End Date",
       "hotelName": "Hotel Name",

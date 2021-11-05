@@ -10,7 +10,9 @@
         "title": "Travel Plan"
       },
       "id": "ID",
-      "name": "Name",
+      "travelName": "Travel Name",
+      "userName": "User Name",
+      "userEmail": "User Email",
       "startDate": "Start Date",
       "endDate": "End Date",
       "airlineCompanyName": "Airline Company Name",

@@ -1,7 +1,7 @@
 {
   "fields": [
     {
-      "fieldName": "name",
+      "fieldName": "travelName",
       "fieldType": "String",
       "fieldReadOnly": true
     },

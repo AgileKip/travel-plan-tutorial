@@ -18,7 +18,9 @@
         "title": "Travel Plan Start Form"
       },
       "id": "ID",
-      "name": "Name",
+      "travelName": "Travel Name",
+      "userName": "User Name",
+      "userEmail": "User Email",
       "startDate": "Start Date",
       "endDate": "End Date"
     }

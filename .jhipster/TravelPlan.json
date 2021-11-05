@@ -1,7 +1,15 @@
 {
   "fields": [
     {
-      "fieldName": "name",
+      "fieldName": "travelName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "userName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "userEmail",
       "fieldType": "String"
     },
     {

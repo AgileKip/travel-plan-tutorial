@@ -18,7 +18,7 @@
         "title": "Task Flight"
       },
       "id": "ID",
-      "name": "Name",
+      "travelName": "Travel Name",
       "startDate": "Start Date",
       "endDate": "End Date",
       "airlineCompanyName": "Airline Company Name",

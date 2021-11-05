@@ -36,6 +36,8 @@ describe('Service Tests', () => {
       elemDefault = new TravelPlan(
         0,
         'AAAAAAA',
+        'AAAAAAA',
+        'AAAAAAA',
         currentDate,
         currentDate,
         'AAAAAAA',
@@ -76,7 +78,9 @@ describe('Service Tests', () => {
       it('should return a list of TravelPlan', async () => {
         const returnedFromService = Object.assign(
           {
-            name: 'BBBBBB',
+            travelName: 'BBBBBB',
+            userName: 'BBBBBB',
+            userEmail: 'BBBBBB',
             startDate: dayjs(currentDate).format(DATE_FORMAT),
             endDate: dayjs(currentDate).format(DATE_FORMAT),
             airlineCompanyName: 'BBBBBB',

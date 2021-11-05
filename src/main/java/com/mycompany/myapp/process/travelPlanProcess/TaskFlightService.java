@@ -68,7 +68,7 @@ public class TaskFlightService {
         TravelPlanDTO travelPlanDTO = travelPlanService
             .findOne(taskFlightContext.getTravelPlanProcess().getTravelPlan().getId())
             .orElseThrow();
-        travelPlanDTO.setName(taskFlightContext.getTravelPlanProcess().getTravelPlan().getName());
+        travelPlanDTO.setTravelName(taskFlightContext.getTravelPlanProcess().getTravelPlan().getTravelName());
         travelPlanDTO.setStartDate(taskFlightContext.getTravelPlanProcess().getTravelPlan().getStartDate());
         travelPlanDTO.setEndDate(taskFlightContext.getTravelPlanProcess().getTravelPlan().getEndDate());
         travelPlanDTO.setAirlineCompanyName(taskFlightContext.getTravelPlanProcess().getTravelPlan().getAirlineCompanyName());

@@ -33,8 +33,14 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class TravelPlanResourceIT {
 
-    private static final String DEFAULT_NAME = "AAAAAAAAAA";
-    private static final String UPDATED_NAME = "BBBBBBBBBB";
+    private static final String DEFAULT_TRAVEL_NAME = "AAAAAAAAAA";
+    private static final String UPDATED_TRAVEL_NAME = "BBBBBBBBBB";
+
+    private static final String DEFAULT_USER_NAME = "AAAAAAAAAA";
+    private static final String UPDATED_USER_NAME = "BBBBBBBBBB";
+
+    private static final String DEFAULT_USER_EMAIL = "AAAAAAAAAA";
+    private static final String UPDATED_USER_EMAIL = "BBBBBBBBBB";
 
     private static final LocalDate DEFAULT_START_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_START_DATE = LocalDate.now(ZoneId.systemDefault());
@@ -88,7 +94,9 @@ class TravelPlanResourceIT {
      */
     public static TravelPlan createEntity(EntityManager em) {
         TravelPlan travelPlan = new TravelPlan()
-            .name(DEFAULT_NAME)
+            .travelName(DEFAULT_TRAVEL_NAME)
+            .userName(DEFAULT_USER_NAME)
+            .userEmail(DEFAULT_USER_EMAIL)
             .startDate(DEFAULT_START_DATE)
             .endDate(DEFAULT_END_DATE)
             .airlineCompanyName(DEFAULT_AIRLINE_COMPANY_NAME)
@@ -108,7 +116,9 @@ class TravelPlanResourceIT {
      */
     public static TravelPlan createUpdatedEntity(EntityManager em) {
         TravelPlan travelPlan = new TravelPlan()
-            .name(UPDATED_NAME)
+            .travelName(UPDATED_TRAVEL_NAME)
+            .userName(UPDATED_USER_NAME)
+            .userEmail(UPDATED_USER_EMAIL)
             .startDate(UPDATED_START_DATE)
             .endDate(UPDATED_END_DATE)
             .airlineCompanyName(UPDATED_AIRLINE_COMPANY_NAME)
@@ -137,7 +147,9 @@ class TravelPlanResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(travelPlan.getId().intValue())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME)))
+            .andExpect(jsonPath("$.[*].travelName").value(hasItem(DEFAULT_TRAVEL_NAME)))
+            .andExpect(jsonPath("$.[*].userName").value(hasItem(DEFAULT_USER_NAME)))
+            .andExpect(jsonPath("$.[*].userEmail").value(hasItem(DEFAULT_USER_EMAIL)))
             .andExpect(jsonPath("$.[*].startDate").value(hasItem(DEFAULT_START_DATE.toString())))
             .andExpect(jsonPath("$.[*].endDate").value(hasItem(DEFAULT_END_DATE.toString())))
             .andExpect(jsonPath("$.[*].airlineCompanyName").value(hasItem(DEFAULT_AIRLINE_COMPANY_NAME)))
@@ -160,7 +172,9 @@ class TravelPlanResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(travelPlan.getId().intValue()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME))
+            .andExpect(jsonPath("$.travelName").value(DEFAULT_TRAVEL_NAME))
+            .andExpect(jsonPath("$.userName").value(DEFAULT_USER_NAME))
+            .andExpect(jsonPath("$.userEmail").value(DEFAULT_USER_EMAIL))
             .andExpect(jsonPath("$.startDate").value(DEFAULT_START_DATE.toString()))
             .andExpect(jsonPath("$.endDate").value(DEFAULT_END_DATE.toString()))
             .andExpect(jsonPath("$.airlineCompanyName").value(DEFAULT_AIRLINE_COMPANY_NAME))

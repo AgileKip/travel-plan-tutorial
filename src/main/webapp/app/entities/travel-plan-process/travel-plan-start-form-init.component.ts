@@ -10,7 +10,9 @@ import TravelPlanProcessService from './travel-plan-process.service';
 const validations: any = {
   travelPlanProcess: {
     travelPlan: {
-      name: {},
+      travelName: {},
+      userName: {},
+      userEmail: {},
       startDate: {},
       endDate: {},
     },
