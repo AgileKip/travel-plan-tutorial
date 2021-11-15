@@ -37,22 +37,10 @@
             <span>{{ travelPlan.endDate }}</span>
           </dd>
           <dt>
-            <span v-text="$t('travelPlanApp.travelPlan.airlineCompanyName')">Airline Company Name</span>
-          </dt>
-          <dd>
-            <span>{{ travelPlan.airlineCompanyName }}</span>
-          </dd>
-          <dt>
             <span v-text="$t('travelPlanApp.travelPlan.airlineTicketNumber')">Airline Ticket Number</span>
           </dt>
           <dd>
             <span>{{ travelPlan.airlineTicketNumber }}</span>
-          </dd>
-          <dt>
-            <span v-text="$t('travelPlanApp.travelPlan.hotelName')">Hotel Name</span>
-          </dt>
-          <dd>
-            <span>{{ travelPlan.hotelName }}</span>
           </dd>
           <dt>
             <span v-text="$t('travelPlanApp.travelPlan.hotelBookingNumber')">Hotel Booking Number</span>
@@ -61,16 +49,38 @@
             <span>{{ travelPlan.hotelBookingNumber }}</span>
           </dd>
           <dt>
-            <span v-text="$t('travelPlanApp.travelPlan.carCompanyName')">Car Company Name</span>
-          </dt>
-          <dd>
-            <span>{{ travelPlan.carCompanyName }}</span>
-          </dd>
-          <dt>
             <span v-text="$t('travelPlanApp.travelPlan.carBookingNumber')">Car Booking Number</span>
           </dt>
           <dd>
             <span>{{ travelPlan.carBookingNumber }}</span>
+          </dd>
+          <dt>
+            <span v-text="$t('travelPlanApp.travelPlan.airlineCompany')">Airline Company</span>
+          </dt>
+          <dd>
+            <div v-if="travelPlan.airlineCompany">
+              <router-link :to="{ name: 'AirlineCompanyView', params: { airlineCompanyId: travelPlan.airlineCompany.id } }">{{
+                travelPlan.airlineCompany.name
+              }}</router-link>
+            </div>
+          </dd>
+          <dt>
+            <span v-text="$t('travelPlanApp.travelPlan.hotel')">Hotel</span>
+          </dt>
+          <dd>
+            <div v-if="travelPlan.hotel">
+              <router-link :to="{ name: 'HotelView', params: { hotelId: travelPlan.hotel.id } }">{{ travelPlan.hotel.name }}</router-link>
+            </div>
+          </dd>
+          <dt>
+            <span v-text="$t('travelPlanApp.travelPlan.rentalCarCompany')">Rental Car Company</span>
+          </dt>
+          <dd>
+            <div v-if="travelPlan.rentalCarCompany">
+              <router-link :to="{ name: 'RentalCarCompanyView', params: { rentalCarCompanyId: travelPlan.rentalCarCompany.id } }">{{
+                travelPlan.rentalCarCompany.name
+              }}</router-link>
+            </div>
           </dd>
         </dl>
         <button type="submit" v-on:click.prevent="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">

@@ -1,0 +1,26 @@
+{
+  "travelPlanApp": {
+    "rentalCarCompany": {
+      "home": {
+        "title": "Rental Car Companies",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Rental Car Company",
+        "createOrEditLabel": "Create or edit a Rental Car Company",
+        "notFound": "No Rental Car Companies found"
+      },
+      "created": "A new Rental Car Company is created with identifier {{ param }}",
+      "updated": "A Rental Car Company is updated with identifier {{ param }}",
+      "deleted": "A Rental Car Company is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Rental Car Company {{ id }}?"
+      },
+      "detail": {
+        "title": "Rental Car Company"
+      },
+      "id": "ID",
+      "name": "Name",
+      "website": "Website",
+      "email": "Email"
+    }
+  }
+}

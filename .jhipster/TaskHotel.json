@@ -16,15 +16,18 @@
       "fieldReadOnly": true
     },
     {
-      "fieldName": "hotelName",
-      "fieldType": "String"
-    },
-    {
       "fieldName": "hotelBookingNumber",
       "fieldType": "String"
     }
   ],
-  "relationships": [],
+  "relationships": [
+    {
+      "relationshipName": "hotel",
+      "otherEntityName": "hotel",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "name"
+    }
+  ],
   "entityType": "user-task-form",
   "processBpmnId": "TravelPlanProcess",
   "processEntityName": "TravelPlanProcess",

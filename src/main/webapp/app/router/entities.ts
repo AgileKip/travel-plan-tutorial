@@ -23,7 +23,26 @@ const TravelPlanProcess_TaskHotelExecute = () => import('@/entities/travel-plan-
 // prettier-ignore
 const TravelPlanProcess_TaskCarDetails = () => import('@/entities/travel-plan-process/task-car/task-car-details.vue');
 // prettier-ignore
+// prettier-ignore
 const TravelPlanProcess_TaskCarExecute = () => import('@/entities/travel-plan-process/task-car/task-car-execute.vue');
+// prettier-ignore
+const AirlineCompany = () => import('@/entities/airline-company/airline-company.vue');
+// prettier-ignore
+const AirlineCompanyUpdate = () => import('@/entities/airline-company/airline-company-update.vue');
+// prettier-ignore
+const AirlineCompanyDetails = () => import('@/entities/airline-company/airline-company-details.vue');
+// prettier-ignore
+const Hotel = () => import('@/entities/hotel/hotel.vue');
+// prettier-ignore
+const HotelUpdate = () => import('@/entities/hotel/hotel-update.vue');
+// prettier-ignore
+const HotelDetails = () => import('@/entities/hotel/hotel-details.vue');
+// prettier-ignore
+const RentalCarCompany = () => import('@/entities/rental-car-company/rental-car-company.vue');
+// prettier-ignore
+const RentalCarCompanyUpdate = () => import('@/entities/rental-car-company/rental-car-company-update.vue');
+// prettier-ignore
+const RentalCarCompanyDetails = () => import('@/entities/rental-car-company/rental-car-company-details.vue');
 // jhipster-needle-add-entity-to-router-import - JHipster will import entities to the router here
 
 export default [
@@ -87,10 +106,83 @@ export default [
     component: TravelPlanProcess_TaskCarDetails,
     meta: { authorities: [Authority.USER] },
   },
+
   {
     path: '/process-definition/TravelPlanProcess/task/TaskCar/:taskInstanceId/execute',
     name: 'TravelPlanProcess_TaskCarExecute',
     component: TravelPlanProcess_TaskCarExecute,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/airline-company',
+    name: 'AirlineCompany',
+    component: AirlineCompany,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/airline-company/new',
+    name: 'AirlineCompanyCreate',
+    component: AirlineCompanyUpdate,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/airline-company/:airlineCompanyId/edit',
+    name: 'AirlineCompanyEdit',
+    component: AirlineCompanyUpdate,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/airline-company/:airlineCompanyId/view',
+    name: 'AirlineCompanyView',
+    component: AirlineCompanyDetails,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/hotel',
+    name: 'Hotel',
+    component: Hotel,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/hotel/new',
+    name: 'HotelCreate',
+    component: HotelUpdate,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/hotel/:hotelId/edit',
+    name: 'HotelEdit',
+    component: HotelUpdate,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/hotel/:hotelId/view',
+    name: 'HotelView',
+    component: HotelDetails,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/rental-car-company',
+    name: 'RentalCarCompany',
+    component: RentalCarCompany,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/rental-car-company/new',
+    name: 'RentalCarCompanyCreate',
+    component: RentalCarCompanyUpdate,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/rental-car-company/:rentalCarCompanyId/edit',
+    name: 'RentalCarCompanyEdit',
+    component: RentalCarCompanyUpdate,
+    meta: { authorities: [Authority.USER] },
+  },
+  {
+    path: '/rental-car-company/:rentalCarCompanyId/view',
+    name: 'RentalCarCompanyView',
+    component: RentalCarCompanyDetails,
     meta: { authorities: [Authority.USER] },
   },
   // jhipster-needle-add-entity-to-router - JHipster will add entities to the router here

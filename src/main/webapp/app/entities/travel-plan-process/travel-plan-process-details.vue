@@ -16,15 +16,15 @@
               </h5>
               <div class="card-body py-0">
                 <div class="form-group">
-                  <label class="form-control-label" v-text="$t('travelPlanApp.travelPlanProcess.name')">name</label>
+                  <label class="form-control-label" v-text="$t('travelPlanApp.travelPlanProcess.travelName')">travelName</label>
                   <input
                     readonly
                     type="text"
                     class="form-control"
-                    name="name"
-                    id="travel-plan-name"
-                    data-cy="name"
-                    v-model="travelPlanProcess.travelPlan.name"
+                    name="travelName"
+                    id="travel-plan-travelName"
+                    data-cy="travelName"
+                    v-model="travelPlanProcess.travelPlan.travelName"
                   />
                 </div>
               </div>
@@ -58,22 +58,6 @@
               </div>
               <div class="card-body py-0">
                 <div class="form-group">
-                  <label class="form-control-label" v-text="$t('travelPlanApp.travelPlanProcess.airlineCompanyName')"
-                    >airlineCompanyName</label
-                  >
-                  <input
-                    readonly
-                    type="text"
-                    class="form-control"
-                    name="airlineCompanyName"
-                    id="travel-plan-airlineCompanyName"
-                    data-cy="airlineCompanyName"
-                    v-model="travelPlanProcess.travelPlan.airlineCompanyName"
-                  />
-                </div>
-              </div>
-              <div class="card-body py-0">
-                <div class="form-group">
                   <label class="form-control-label" v-text="$t('travelPlanApp.travelPlanProcess.airlineTicketNumber')"
                     >airlineTicketNumber</label
                   >
@@ -85,20 +69,6 @@
                     id="travel-plan-airlineTicketNumber"
                     data-cy="airlineTicketNumber"
                     v-model="travelPlanProcess.travelPlan.airlineTicketNumber"
-                  />
-                </div>
-              </div>
-              <div class="card-body py-0">
-                <div class="form-group">
-                  <label class="form-control-label" v-text="$t('travelPlanApp.travelPlanProcess.hotelName')">hotelName</label>
-                  <input
-                    readonly
-                    type="text"
-                    class="form-control"
-                    name="hotelName"
-                    id="travel-plan-hotelName"
-                    data-cy="hotelName"
-                    v-model="travelPlanProcess.travelPlan.hotelName"
                   />
                 </div>
               </div>
@@ -120,20 +90,6 @@
               </div>
               <div class="card-body py-0">
                 <div class="form-group">
-                  <label class="form-control-label" v-text="$t('travelPlanApp.travelPlanProcess.carCompanyName')">carCompanyName</label>
-                  <input
-                    readonly
-                    type="text"
-                    class="form-control"
-                    name="carCompanyName"
-                    id="travel-plan-carCompanyName"
-                    data-cy="carCompanyName"
-                    v-model="travelPlanProcess.travelPlan.carCompanyName"
-                  />
-                </div>
-              </div>
-              <div class="card-body py-0">
-                <div class="form-group">
                   <label class="form-control-label" v-text="$t('travelPlanApp.travelPlanProcess.carBookingNumber')">carBookingNumber</label>
                   <input
                     readonly
@@ -143,6 +99,84 @@
                     id="travel-plan-carBookingNumber"
                     data-cy="carBookingNumber"
                     v-model="travelPlanProcess.travelPlan.carBookingNumber"
+                  />
+                </div>
+              </div>
+              <div class="card-body py-0">
+                <div class="form-group">
+                  <label
+                    class="form-control-label"
+                    v-text="$t('travelPlanApp.travelPlanProcess.airlineCompany')"
+                    for="travel-plan-process-airlineCompany"
+                    >Airline Company</label
+                  >
+                  <input
+                    v-if="travelPlanProcess.travelPlan.airlineCompany"
+                    readonly
+                    type="text"
+                    class="form-control"
+                    name="airlineCompany"
+                    id="travel-plan-airlineCompany"
+                    data-cy="airlineCompany"
+                    :value="travelPlanProcess.travelPlan.airlineCompany.name"
+                  />
+                  <input
+                    v-else
+                    readonly
+                    type="text"
+                    class="form-control"
+                    name="airlineCompany"
+                    id="travel-plan-airlineCompany"
+                    data-cy="airlineCompany"
+                    value=""
+                  />
+                </div>
+              </div>
+              <div class="card-body py-0">
+                <div class="form-group">
+                  <label class="form-control-label" v-text="$t('travelPlanApp.travelPlanProcess.hotel')" for="travel-plan-process-hotel"
+                    >Hotel</label
+                  >
+                  <input
+                    v-if="travelPlanProcess.travelPlan.hotel"
+                    readonly
+                    type="text"
+                    class="form-control"
+                    name="hotel"
+                    id="travel-plan-hotel"
+                    data-cy="hotel"
+                    :value="travelPlanProcess.travelPlan.hotel.name"
+                  />
+                  <input v-else readonly type="text" class="form-control" name="hotel" id="travel-plan-hotel" data-cy="hotel" value="" />
+                </div>
+              </div>
+              <div class="card-body py-0">
+                <div class="form-group">
+                  <label
+                    class="form-control-label"
+                    v-text="$t('travelPlanApp.travelPlanProcess.rentalCarCompany')"
+                    for="travel-plan-process-rentalCarCompany"
+                    >Rental Car Company</label
+                  >
+                  <input
+                    v-if="travelPlanProcess.travelPlan.rentalCarCompany"
+                    readonly
+                    type="text"
+                    class="form-control"
+                    name="rentalCarCompany"
+                    id="travel-plan-rentalCarCompany"
+                    data-cy="rentalCarCompany"
+                    :value="travelPlanProcess.travelPlan.rentalCarCompany.name"
+                  />
+                  <input
+                    v-else
+                    readonly
+                    type="text"
+                    class="form-control"
+                    name="rentalCarCompany"
+                    id="travel-plan-rentalCarCompany"
+                    data-cy="rentalCarCompany"
+                    value=""
                   />
                 </div>
               </div>

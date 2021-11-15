@@ -36,23 +36,23 @@ public class TravelPlan implements Serializable {
     @Column(name = "end_date")
     private LocalDate endDate;
 
-    @Column(name = "airline_company_name")
-    private String airlineCompanyName;
-
     @Column(name = "airline_ticket_number")
     private String airlineTicketNumber;
-
-    @Column(name = "hotel_name")
-    private String hotelName;
 
     @Column(name = "hotel_booking_number")
     private String hotelBookingNumber;
 
-    @Column(name = "car_company_name")
-    private String carCompanyName;
-
     @Column(name = "car_booking_number")
     private String carBookingNumber;
+
+    @ManyToOne
+    private AirlineCompany airlineCompany;
+
+    @ManyToOne
+    private Hotel hotel;
+
+    @ManyToOne
+    private RentalCarCompany rentalCarCompany;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here
     public Long getId() {
@@ -133,19 +133,6 @@ public class TravelPlan implements Serializable {
         this.endDate = endDate;
     }
 
-    public String getAirlineCompanyName() {
-        return this.airlineCompanyName;
-    }
-
-    public TravelPlan airlineCompanyName(String airlineCompanyName) {
-        this.airlineCompanyName = airlineCompanyName;
-        return this;
-    }
-
-    public void setAirlineCompanyName(String airlineCompanyName) {
-        this.airlineCompanyName = airlineCompanyName;
-    }
-
     public String getAirlineTicketNumber() {
         return this.airlineTicketNumber;
     }
@@ -157,19 +144,6 @@ public class TravelPlan implements Serializable {
 
     public void setAirlineTicketNumber(String airlineTicketNumber) {
         this.airlineTicketNumber = airlineTicketNumber;
-    }
-
-    public String getHotelName() {
-        return this.hotelName;
-    }
-
-    public TravelPlan hotelName(String hotelName) {
-        this.hotelName = hotelName;
-        return this;
-    }
-
-    public void setHotelName(String hotelName) {
-        this.hotelName = hotelName;
     }
 
     public String getHotelBookingNumber() {
@@ -185,19 +159,6 @@ public class TravelPlan implements Serializable {
         this.hotelBookingNumber = hotelBookingNumber;
     }
 
-    public String getCarCompanyName() {
-        return this.carCompanyName;
-    }
-
-    public TravelPlan carCompanyName(String carCompanyName) {
-        this.carCompanyName = carCompanyName;
-        return this;
-    }
-
-    public void setCarCompanyName(String carCompanyName) {
-        this.carCompanyName = carCompanyName;
-    }
-
     public String getCarBookingNumber() {
         return this.carBookingNumber;
     }
@@ -209,6 +170,45 @@ public class TravelPlan implements Serializable {
 
     public void setCarBookingNumber(String carBookingNumber) {
         this.carBookingNumber = carBookingNumber;
+    }
+
+    public AirlineCompany getAirlineCompany() {
+        return this.airlineCompany;
+    }
+
+    public TravelPlan airlineCompany(AirlineCompany airlineCompany) {
+        this.setAirlineCompany(airlineCompany);
+        return this;
+    }
+
+    public void setAirlineCompany(AirlineCompany airlineCompany) {
+        this.airlineCompany = airlineCompany;
+    }
+
+    public Hotel getHotel() {
+        return this.hotel;
+    }
+
+    public TravelPlan hotel(Hotel hotel) {
+        this.setHotel(hotel);
+        return this;
+    }
+
+    public void setHotel(Hotel hotel) {
+        this.hotel = hotel;
+    }
+
+    public RentalCarCompany getRentalCarCompany() {
+        return this.rentalCarCompany;
+    }
+
+    public TravelPlan rentalCarCompany(RentalCarCompany rentalCarCompany) {
+        this.setRentalCarCompany(rentalCarCompany);
+        return this;
+    }
+
+    public void setRentalCarCompany(RentalCarCompany rentalCarCompany) {
+        this.rentalCarCompany = rentalCarCompany;
     }
 
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
@@ -240,11 +240,8 @@ public class TravelPlan implements Serializable {
             ", userEmail='" + getUserEmail() + "'" +
             ", startDate='" + getStartDate() + "'" +
             ", endDate='" + getEndDate() + "'" +
-            ", airlineCompanyName='" + getAirlineCompanyName() + "'" +
             ", airlineTicketNumber='" + getAirlineTicketNumber() + "'" +
-            ", hotelName='" + getHotelName() + "'" +
             ", hotelBookingNumber='" + getHotelBookingNumber() + "'" +
-            ", carCompanyName='" + getCarCompanyName() + "'" +
             ", carBookingNumber='" + getCarBookingNumber() + "'" +
             "}";
     }

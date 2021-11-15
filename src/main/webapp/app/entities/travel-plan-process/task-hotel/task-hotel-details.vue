@@ -45,18 +45,6 @@
               />
             </div>
             <div class="form-group">
-              <label class="form-control-label" v-text="$t('travelPlanApp.taskHotel.hotelName')">hotelName</label>
-              <input
-                readonly
-                type="text"
-                class="form-control"
-                name="hotelName"
-                id="travel-plan-hotelName"
-                data-cy="hotelName"
-                v-model="taskContext.travelPlanProcess.travelPlan.hotelName"
-              />
-            </div>
-            <div class="form-group">
               <label class="form-control-label" v-text="$t('travelPlanApp.taskHotel.hotelBookingNumber')">hotelBookingNumber</label>
               <input
                 readonly
@@ -67,6 +55,20 @@
                 data-cy="hotelBookingNumber"
                 v-model="taskContext.travelPlanProcess.travelPlan.hotelBookingNumber"
               />
+            </div>
+            <div class="form-group">
+              <label class="form-control-label" v-text="$t('travelPlanApp.taskHotel.hotel')" for="task-hotel-hotel">Hotel</label>
+              <input
+                v-if="taskContext.travelPlanProcess.travelPlan.hotel"
+                readonly
+                type="text"
+                class="form-control"
+                name="hotel"
+                id="travel-plan-hotel"
+                data-cy="hotel"
+                :value="taskContext.travelPlanProcess.travelPlan.hotel.name"
+              />
+              <input v-else readonly type="text" class="form-control" name="hotel" id="travel-plan-hotel" data-cy="hotel" value="" />
             </div>
           </template>
         </akip-show-task-instance>

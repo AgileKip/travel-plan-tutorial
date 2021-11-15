@@ -15,12 +15,12 @@
       "userEmail": "User Email",
       "startDate": "Start Date",
       "endDate": "End Date",
-      "airlineCompanyName": "Airline Company Name",
       "airlineTicketNumber": "Airline Ticket Number",
-      "hotelName": "Hotel Name",
       "hotelBookingNumber": "Hotel Booking Number",
-      "carCompanyName": "Car Company Name",
-      "carBookingNumber": "Car Booking Number"
+      "carBookingNumber": "Car Booking Number",
+      "airlineCompany": "Airline Company",
+      "hotel": "Hotel",
+      "rentalCarCompany": "Rental Car Company"
     }
   }
 }

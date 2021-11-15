@@ -1,7 +1,7 @@
 {
   "fields": [
     {
-      "fieldName": "name",
+      "fieldName": "travelName",
       "fieldType": "String"
     },
     {
@@ -13,15 +13,7 @@
       "fieldType": "LocalDate"
     },
     {
-      "fieldName": "airlineCompanyName",
-      "fieldType": "String"
-    },
-    {
       "fieldName": "airlineTicketNumber",
-      "fieldType": "String"
-    },
-    {
-      "fieldName": "hotelName",
       "fieldType": "String"
     },
     {
@@ -29,15 +21,30 @@
       "fieldType": "String"
     },
     {
-      "fieldName": "carCompanyName",
-      "fieldType": "String"
-    },
-    {
       "fieldName": "carBookingNumber",
       "fieldType": "String"
     }
   ],
-  "relationships": [],
+  "relationships": [
+    {
+      "relationshipName": "airlineCompany",
+      "otherEntityName": "airlineCompany",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipName": "hotel",
+      "otherEntityName": "hotel",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "name"
+    },
+    {
+      "relationshipName": "rentalCarCompany",
+      "otherEntityName": "rentalCarCompany",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "name"
+    }
+  ],
   "entityType": "process-binding",
   "processBpmnId": "TravelPlanProcess",
   "domainEntityName": "TravelPlan",

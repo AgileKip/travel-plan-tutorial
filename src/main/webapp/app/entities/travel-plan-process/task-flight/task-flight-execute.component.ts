@@ -1,5 +1,8 @@
 import { Component, Vue, Inject } from 'vue-property-decorator';
 
+import AirlineCompanyService from '@/entities/airline-company/airline-company.service';
+import { IAirlineCompany } from '@/shared/model/airline-company.model';
+
 import TaskFlightService from './task-flight.service';
 import { TaskFlightContext } from './task-flight.model';
 
@@ -10,7 +13,6 @@ const validations: any = {
         travelName: {},
         startDate: {},
         endDate: {},
-        airlineCompanyName: {},
         airlineTicketNumber: {},
       },
     },
@@ -23,6 +25,10 @@ const validations: any = {
 export default class TaskFlightExecuteComponent extends Vue {
   private taskFlightService: TaskFlightService = new TaskFlightService();
   private taskContext: TaskFlightContext = {};
+
+  @Inject('airlineCompanyService') private airlineCompanyService: () => AirlineCompanyService;
+
+  public airlineCompanies: IAirlineCompany[] = [];
   public isSaving = false;
 
   beforeRouteEnter(to, from, next) {
@@ -30,6 +36,7 @@ export default class TaskFlightExecuteComponent extends Vue {
       if (to.params.taskInstanceId) {
         vm.claimTaskInstance(to.params.taskInstanceId);
       }
+      vm.initRelationships();
     });
   }
 
@@ -49,5 +56,11 @@ export default class TaskFlightExecuteComponent extends Vue {
     });
   }
 
-  public initRelationships(): void {}
+  public initRelationships(): void {
+    this.airlineCompanyService()
+      .retrieve()
+      .then(res => {
+        this.airlineCompanies = res.data;
+      });
+  }
 }

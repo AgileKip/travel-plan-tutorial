@@ -16,15 +16,18 @@
       "fieldReadOnly": true
     },
     {
-      "fieldName": "carCompanyName",
-      "fieldType": "String"
-    },
-    {
       "fieldName": "carBookingNumber",
       "fieldType": "String"
     }
   ],
-  "relationships": [],
+  "relationships": [
+    {
+      "relationshipName": "rentalCarCompany",
+      "otherEntityName": "rentalCarCompany",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "name"
+    }
+  ],
   "entityType": "user-task-form",
   "processBpmnId": "TravelPlanProcess",
   "processEntityName": "TravelPlanProcess",

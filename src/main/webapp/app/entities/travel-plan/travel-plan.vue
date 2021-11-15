@@ -23,12 +23,12 @@
             <th scope="row"><span v-text="$t('travelPlanApp.travelPlan.userEmail')">User Email</span></th>
             <th scope="row"><span v-text="$t('travelPlanApp.travelPlan.startDate')">Start Date</span></th>
             <th scope="row"><span v-text="$t('travelPlanApp.travelPlan.endDate')">End Date</span></th>
-            <th scope="row"><span v-text="$t('travelPlanApp.travelPlan.airlineCompanyName')">Airline Company Name</span></th>
             <th scope="row"><span v-text="$t('travelPlanApp.travelPlan.airlineTicketNumber')">Airline Ticket Number</span></th>
-            <th scope="row"><span v-text="$t('travelPlanApp.travelPlan.hotelName')">Hotel Name</span></th>
             <th scope="row"><span v-text="$t('travelPlanApp.travelPlan.hotelBookingNumber')">Hotel Booking Number</span></th>
-            <th scope="row"><span v-text="$t('travelPlanApp.travelPlan.carCompanyName')">Car Company Name</span></th>
             <th scope="row"><span v-text="$t('travelPlanApp.travelPlan.carBookingNumber')">Car Booking Number</span></th>
+            <th scope="row"><span v-text="$t('travelPlanApp.travelPlan.airlineCompany')">Airline Company</span></th>
+            <th scope="row"><span v-text="$t('travelPlanApp.travelPlan.hotel')">Hotel</span></th>
+            <th scope="row"><span v-text="$t('travelPlanApp.travelPlan.rentalCarCompany')">Rental Car Company</span></th>
             <th scope="row"></th>
           </tr>
         </thead>
@@ -42,12 +42,28 @@
             <td>{{ travelPlan.userEmail }}</td>
             <td>{{ travelPlan.startDate }}</td>
             <td>{{ travelPlan.endDate }}</td>
-            <td>{{ travelPlan.airlineCompanyName }}</td>
             <td>{{ travelPlan.airlineTicketNumber }}</td>
-            <td>{{ travelPlan.hotelName }}</td>
             <td>{{ travelPlan.hotelBookingNumber }}</td>
-            <td>{{ travelPlan.carCompanyName }}</td>
             <td>{{ travelPlan.carBookingNumber }}</td>
+            <td>
+              <div v-if="travelPlan.airlineCompany">
+                <router-link :to="{ name: 'AirlineCompanyView', params: { airlineCompanyId: travelPlan.airlineCompany.id } }">{{
+                  travelPlan.airlineCompany.name
+                }}</router-link>
+              </div>
+            </td>
+            <td>
+              <div v-if="travelPlan.hotel">
+                <router-link :to="{ name: 'HotelView', params: { hotelId: travelPlan.hotel.id } }">{{ travelPlan.hotel.name }}</router-link>
+              </div>
+            </td>
+            <td>
+              <div v-if="travelPlan.rentalCarCompany">
+                <router-link :to="{ name: 'RentalCarCompanyView', params: { rentalCarCompanyId: travelPlan.rentalCarCompany.id } }">{{
+                  travelPlan.rentalCarCompany.name
+                }}</router-link>
+              </div>
+            </td>
             <td class="text-right">
               <div class="btn-group">
                 <router-link :to="{ name: 'TravelPlanView', params: { travelPlanId: travelPlan.id } }" custom v-slot="{ navigate }">

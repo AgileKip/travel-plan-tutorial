@@ -16,15 +16,18 @@
       "fieldReadOnly": true
     },
     {
-      "fieldName": "airlineCompanyName",
-      "fieldType": "String"
-    },
-    {
       "fieldName": "airlineTicketNumber",
       "fieldType": "String"
     }
   ],
-  "relationships": [],
+  "relationships": [
+    {
+      "relationshipName": "airlineCompany",
+      "otherEntityName": "airlineCompany",
+      "relationshipType": "many-to-one",
+      "otherEntityField": "name"
+    }
+  ],
   "entityType": "user-task-form",
   "processBpmnId": "TravelPlanProcess",
   "processEntityName": "TravelPlanProcess",

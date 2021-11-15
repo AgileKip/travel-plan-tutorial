@@ -1,7 +1,9 @@
 package com.mycompany.myapp.process.travelPlanProcess;
 
+import com.mycompany.myapp.domain.RentalCarCompany;
 import com.mycompany.myapp.domain.TravelPlan;
 import com.mycompany.myapp.domain.TravelPlanProcess;
+import com.mycompany.myapp.service.dto.RentalCarCompanyDTO;
 import com.mycompany.myapp.service.dto.TravelPlanDTO;
 import com.mycompany.myapp.service.dto.TravelPlanProcessDTO;
 import org.akip.service.mapper.ProcessInstanceMapper;
@@ -19,7 +21,12 @@ public interface TaskCarMapper {
     @Mapping(target = "travelName", source = "travelName")
     @Mapping(target = "startDate", source = "startDate")
     @Mapping(target = "endDate", source = "endDate")
-    @Mapping(target = "carCompanyName", source = "carCompanyName")
     @Mapping(target = "carBookingNumber", source = "carBookingNumber")
+    @Mapping(target = "rentalCarCompany", source = "rentalCarCompany")
     TravelPlanDTO toTravelPlanDTO(TravelPlan travelPlan);
+
+    @BeanMapping(ignoreByDefault = true)
+    @Mapping(target = "id", source = "id")
+    @Mapping(target = "name", source = "name")
+    RentalCarCompanyDTO toRentalCarCompanyDTO(RentalCarCompany name);
 }

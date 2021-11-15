@@ -4,6 +4,7 @@ import com.mycompany.myapp.repository.TravelPlanProcessRepository;
 import com.mycompany.myapp.service.TravelPlanService;
 import com.mycompany.myapp.service.dto.TravelPlanDTO;
 import com.mycompany.myapp.service.dto.TravelPlanProcessDTO;
+import com.mycompany.myapp.service.mapper.TravelPlanProcessMapper;
 import org.akip.repository.TaskInstanceRepository;
 import org.akip.service.TaskInstanceService;
 import org.akip.service.dto.TaskInstanceDTO;
@@ -25,13 +26,16 @@ public class TaskHotelService {
 
     private final TaskHotelMapper taskHotelMapper;
 
+    private final TravelPlanProcessMapper travelPlanProcessMapper;
+
     public TaskHotelService(
         TaskInstanceService taskInstanceService,
         TravelPlanService travelPlanService,
         TaskInstanceRepository taskInstanceRepository,
         TravelPlanProcessRepository travelPlanProcessRepository,
         TaskInstanceMapper taskInstanceMapper,
-        TaskHotelMapper taskHotelMapper
+        TaskHotelMapper taskHotelMapper,
+        TravelPlanProcessMapper travelPlanProcessMapper
     ) {
         this.taskInstanceService = taskInstanceService;
         this.travelPlanService = travelPlanService;
@@ -39,6 +43,7 @@ public class TaskHotelService {
         this.travelPlanProcessRepository = travelPlanProcessRepository;
         this.taskInstanceMapper = taskInstanceMapper;
         this.taskHotelMapper = taskHotelMapper;
+        this.travelPlanProcessMapper = travelPlanProcessMapper;
     }
 
     public TaskHotelContextDTO loadContext(Long taskInstanceId) {
@@ -71,13 +76,17 @@ public class TaskHotelService {
         travelPlanDTO.setTravelName(taskHotelContext.getTravelPlanProcess().getTravelPlan().getTravelName());
         travelPlanDTO.setStartDate(taskHotelContext.getTravelPlanProcess().getTravelPlan().getStartDate());
         travelPlanDTO.setEndDate(taskHotelContext.getTravelPlanProcess().getTravelPlan().getEndDate());
-        travelPlanDTO.setHotelName(taskHotelContext.getTravelPlanProcess().getTravelPlan().getHotelName());
         travelPlanDTO.setHotelBookingNumber(taskHotelContext.getTravelPlanProcess().getTravelPlan().getHotelBookingNumber());
+        travelPlanDTO.setHotel(taskHotelContext.getTravelPlanProcess().getTravelPlan().getHotel());
         travelPlanService.save(travelPlanDTO);
     }
 
     public void complete(TaskHotelContextDTO taskHotelContext) {
         save(taskHotelContext);
-        taskInstanceService.complete(taskHotelContext.getTaskInstance(), taskHotelContext.getTravelPlanProcess());
+        TravelPlanProcessDTO travelPlanProcess = travelPlanProcessRepository
+            .findByProcessInstanceId(taskHotelContext.getTravelPlanProcess().getProcessInstance().getId())
+            .map(travelPlanProcessMapper::toDto)
+            .orElseThrow();
+        taskInstanceService.complete(taskHotelContext.getTaskInstance(), travelPlanProcess);
     }
 }

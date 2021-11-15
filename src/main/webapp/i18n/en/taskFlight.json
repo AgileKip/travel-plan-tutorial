@@ -21,8 +21,8 @@
       "travelName": "Travel Name",
       "startDate": "Start Date",
       "endDate": "End Date",
-      "airlineCompanyName": "Airline Company Name",
-      "airlineTicketNumber": "Airline Ticket Number"
+      "airlineTicketNumber": "Airline Ticket Number",
+      "airlineCompany": "Airline Company"
     }
   }
 }

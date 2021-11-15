@@ -33,20 +33,7 @@ describe('Service Tests', () => {
     beforeEach(() => {
       service = new TravelPlanService();
       currentDate = new Date();
-      elemDefault = new TravelPlan(
-        0,
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
-        currentDate,
-        currentDate,
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA',
-        'AAAAAAA'
-      );
+      elemDefault = new TravelPlan(0, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA', currentDate, currentDate, 'AAAAAAA', 'AAAAAAA', 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -83,11 +70,8 @@ describe('Service Tests', () => {
             userEmail: 'BBBBBB',
             startDate: dayjs(currentDate).format(DATE_FORMAT),
             endDate: dayjs(currentDate).format(DATE_FORMAT),
-            airlineCompanyName: 'BBBBBB',
             airlineTicketNumber: 'BBBBBB',
-            hotelName: 'BBBBBB',
             hotelBookingNumber: 'BBBBBB',
-            carCompanyName: 'BBBBBB',
             carBookingNumber: 'BBBBBB',
           },
           elemDefault

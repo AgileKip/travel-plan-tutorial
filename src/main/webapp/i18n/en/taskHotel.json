@@ -21,8 +21,8 @@
       "travelName": "Travel Name",
       "startDate": "Start Date",
       "endDate": "End Date",
-      "hotelName": "Hotel Name",
-      "hotelBookingNumber": "Hotel Booking Number"
+      "hotelBookingNumber": "Hotel Booking Number",
+      "hotel": "Hotel"
     }
   }
 }

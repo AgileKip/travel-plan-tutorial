@@ -48,20 +48,11 @@ class TravelPlanResourceIT {
     private static final LocalDate DEFAULT_END_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_END_DATE = LocalDate.now(ZoneId.systemDefault());
 
-    private static final String DEFAULT_AIRLINE_COMPANY_NAME = "AAAAAAAAAA";
-    private static final String UPDATED_AIRLINE_COMPANY_NAME = "BBBBBBBBBB";
-
     private static final String DEFAULT_AIRLINE_TICKET_NUMBER = "AAAAAAAAAA";
     private static final String UPDATED_AIRLINE_TICKET_NUMBER = "BBBBBBBBBB";
 
-    private static final String DEFAULT_HOTEL_NAME = "AAAAAAAAAA";
-    private static final String UPDATED_HOTEL_NAME = "BBBBBBBBBB";
-
     private static final String DEFAULT_HOTEL_BOOKING_NUMBER = "AAAAAAAAAA";
     private static final String UPDATED_HOTEL_BOOKING_NUMBER = "BBBBBBBBBB";
-
-    private static final String DEFAULT_CAR_COMPANY_NAME = "AAAAAAAAAA";
-    private static final String UPDATED_CAR_COMPANY_NAME = "BBBBBBBBBB";
 
     private static final String DEFAULT_CAR_BOOKING_NUMBER = "AAAAAAAAAA";
     private static final String UPDATED_CAR_BOOKING_NUMBER = "BBBBBBBBBB";
@@ -99,11 +90,8 @@ class TravelPlanResourceIT {
             .userEmail(DEFAULT_USER_EMAIL)
             .startDate(DEFAULT_START_DATE)
             .endDate(DEFAULT_END_DATE)
-            .airlineCompanyName(DEFAULT_AIRLINE_COMPANY_NAME)
             .airlineTicketNumber(DEFAULT_AIRLINE_TICKET_NUMBER)
-            .hotelName(DEFAULT_HOTEL_NAME)
             .hotelBookingNumber(DEFAULT_HOTEL_BOOKING_NUMBER)
-            .carCompanyName(DEFAULT_CAR_COMPANY_NAME)
             .carBookingNumber(DEFAULT_CAR_BOOKING_NUMBER);
         return travelPlan;
     }
@@ -121,11 +109,8 @@ class TravelPlanResourceIT {
             .userEmail(UPDATED_USER_EMAIL)
             .startDate(UPDATED_START_DATE)
             .endDate(UPDATED_END_DATE)
-            .airlineCompanyName(UPDATED_AIRLINE_COMPANY_NAME)
             .airlineTicketNumber(UPDATED_AIRLINE_TICKET_NUMBER)
-            .hotelName(UPDATED_HOTEL_NAME)
             .hotelBookingNumber(UPDATED_HOTEL_BOOKING_NUMBER)
-            .carCompanyName(UPDATED_CAR_COMPANY_NAME)
             .carBookingNumber(UPDATED_CAR_BOOKING_NUMBER);
         return travelPlan;
     }
@@ -152,11 +137,8 @@ class TravelPlanResourceIT {
             .andExpect(jsonPath("$.[*].userEmail").value(hasItem(DEFAULT_USER_EMAIL)))
             .andExpect(jsonPath("$.[*].startDate").value(hasItem(DEFAULT_START_DATE.toString())))
             .andExpect(jsonPath("$.[*].endDate").value(hasItem(DEFAULT_END_DATE.toString())))
-            .andExpect(jsonPath("$.[*].airlineCompanyName").value(hasItem(DEFAULT_AIRLINE_COMPANY_NAME)))
             .andExpect(jsonPath("$.[*].airlineTicketNumber").value(hasItem(DEFAULT_AIRLINE_TICKET_NUMBER)))
-            .andExpect(jsonPath("$.[*].hotelName").value(hasItem(DEFAULT_HOTEL_NAME)))
             .andExpect(jsonPath("$.[*].hotelBookingNumber").value(hasItem(DEFAULT_HOTEL_BOOKING_NUMBER)))
-            .andExpect(jsonPath("$.[*].carCompanyName").value(hasItem(DEFAULT_CAR_COMPANY_NAME)))
             .andExpect(jsonPath("$.[*].carBookingNumber").value(hasItem(DEFAULT_CAR_BOOKING_NUMBER)));
     }
 
@@ -177,11 +159,8 @@ class TravelPlanResourceIT {
             .andExpect(jsonPath("$.userEmail").value(DEFAULT_USER_EMAIL))
             .andExpect(jsonPath("$.startDate").value(DEFAULT_START_DATE.toString()))
             .andExpect(jsonPath("$.endDate").value(DEFAULT_END_DATE.toString()))
-            .andExpect(jsonPath("$.airlineCompanyName").value(DEFAULT_AIRLINE_COMPANY_NAME))
             .andExpect(jsonPath("$.airlineTicketNumber").value(DEFAULT_AIRLINE_TICKET_NUMBER))
-            .andExpect(jsonPath("$.hotelName").value(DEFAULT_HOTEL_NAME))
             .andExpect(jsonPath("$.hotelBookingNumber").value(DEFAULT_HOTEL_BOOKING_NUMBER))
-            .andExpect(jsonPath("$.carCompanyName").value(DEFAULT_CAR_COMPANY_NAME))
             .andExpect(jsonPath("$.carBookingNumber").value(DEFAULT_CAR_BOOKING_NUMBER));
     }
 

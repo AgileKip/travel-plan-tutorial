@@ -17,6 +17,7 @@
                 class="form-control"
                 name="travelName"
                 id="task-flight-travelName"
+                readonly
                 data-cy="travelName"
                 :class="{
                   valid: !$v.taskContext.travelPlanProcess.travelPlan.travelName.$invalid,
@@ -30,22 +31,9 @@
                 >Start Date</label
               >
               <b-input-group class="mb-3">
-                <b-input-group-prepend>
-                  <b-form-datepicker
-                    aria-controls="task-flight-startDate"
-                    v-model="$v.taskContext.travelPlanProcess.travelPlan.startDate.$model"
-                    name="startDate"
-                    class="form-control"
-                    :locale="currentLanguage"
-                    button-only
-                    today-button
-                    reset-button
-                    close-button
-                  >
-                  </b-form-datepicker>
-                </b-input-group-prepend>
                 <b-form-input
                   id="task-flight-startDate"
+                  readonly
                   data-cy="startDate"
                   type="text"
                   class="form-control"
@@ -61,22 +49,9 @@
             <div class="form-group">
               <label class="form-control-label" v-text="$t('travelPlanApp.taskFlight.endDate')" for="task-flight-endDate">End Date</label>
               <b-input-group class="mb-3">
-                <b-input-group-prepend>
-                  <b-form-datepicker
-                    aria-controls="task-flight-endDate"
-                    v-model="$v.taskContext.travelPlanProcess.travelPlan.endDate.$model"
-                    name="endDate"
-                    class="form-control"
-                    :locale="currentLanguage"
-                    button-only
-                    today-button
-                    reset-button
-                    close-button
-                  >
-                  </b-form-datepicker>
-                </b-input-group-prepend>
                 <b-form-input
                   id="task-flight-endDate"
+                  readonly
                   data-cy="endDate"
                   type="text"
                   class="form-control"
@@ -88,26 +63,6 @@
                   v-model="$v.taskContext.travelPlanProcess.travelPlan.endDate.$model"
                 />
               </b-input-group>
-            </div>
-            <div class="form-group">
-              <label
-                class="form-control-label"
-                v-text="$t('travelPlanApp.taskFlight.airlineCompanyName')"
-                for="task-flight-airlineCompanyName"
-                >Airline Company Name</label
-              >
-              <input
-                type="text"
-                class="form-control"
-                name="airlineCompanyName"
-                id="task-flight-airlineCompanyName"
-                data-cy="airlineCompanyName"
-                :class="{
-                  valid: !$v.taskContext.travelPlanProcess.travelPlan.airlineCompanyName.$invalid,
-                  invalid: $v.taskContext.travelPlanProcess.travelPlan.airlineCompanyName.$invalid,
-                }"
-                v-model="$v.taskContext.travelPlanProcess.travelPlan.airlineCompanyName.$model"
-              />
             </div>
             <div class="form-group">
               <label
@@ -128,6 +83,32 @@
                 }"
                 v-model="$v.taskContext.travelPlanProcess.travelPlan.airlineTicketNumber.$model"
               />
+            </div>
+            <div class="form-group">
+              <label class="form-control-label" v-text="$t('travelPlanApp.taskFlight.airlineCompany')" for="task-flight-airlineCompany"
+                >Airline Company</label
+              >
+              <select
+                class="form-control"
+                id="task-flight-airlineCompany"
+                data-cy="airlineCompany"
+                name="airlineCompany"
+                v-model="taskContext.travelPlanProcess.travelPlan.airlineCompany"
+              >
+                <option v-bind:value="null"></option>
+                <option
+                  v-bind:value="
+                    taskContext.travelPlanProcess.travelPlan.airlineCompany &&
+                    airlineCompanyOption.id === taskContext.travelPlanProcess.travelPlan.airlineCompany.id
+                      ? taskContext.travelPlanProcess.travelPlan.airlineCompany
+                      : airlineCompanyOption
+                  "
+                  v-for="airlineCompanyOption in airlineCompanies"
+                  :key="airlineCompanyOption.id"
+                >
+                  {{ airlineCompanyOption.name }}
+                </option>
+              </select>
             </div>
           </template>
         </akip-show-task-instance>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+    <!--
+        Added the constraints for entity TaskFlight.
+    -->
+    <changeSet id="20210401000004-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="airline_company_id"
+                                 baseTableName="task_flight"
+                                 constraintName="fk_task_flight__airline_company_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="airline_company"/>
+    </changeSet>
+</databaseChangeLog>

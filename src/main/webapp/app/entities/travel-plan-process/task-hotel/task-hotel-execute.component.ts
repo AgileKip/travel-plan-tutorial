@@ -1,5 +1,8 @@
 import { Component, Vue, Inject } from 'vue-property-decorator';
 
+import HotelService from '@/entities/hotel/hotel.service';
+import { IHotel } from '@/shared/model/hotel.model';
+
 import TaskHotelService from './task-hotel.service';
 import { TaskHotelContext } from './task-hotel.model';
 
@@ -10,7 +13,6 @@ const validations: any = {
         travelName: {},
         startDate: {},
         endDate: {},
-        hotelName: {},
         hotelBookingNumber: {},
       },
     },
@@ -23,6 +25,10 @@ const validations: any = {
 export default class TaskHotelExecuteComponent extends Vue {
   private taskHotelService: TaskHotelService = new TaskHotelService();
   private taskContext: TaskHotelContext = {};
+
+  @Inject('hotelService') private hotelService: () => HotelService;
+
+  public hotels: IHotel[] = [];
   public isSaving = false;
 
   beforeRouteEnter(to, from, next) {
@@ -30,6 +36,7 @@ export default class TaskHotelExecuteComponent extends Vue {
       if (to.params.taskInstanceId) {
         vm.claimTaskInstance(to.params.taskInstanceId);
       }
+      vm.initRelationships();
     });
   }
 
@@ -49,5 +56,11 @@ export default class TaskHotelExecuteComponent extends Vue {
     });
   }
 
-  public initRelationships(): void {}
+  public initRelationships(): void {
+    this.hotelService()
+      .retrieve()
+      .then(res => {
+        this.hotels = res.data;
+      });
+  }
 }

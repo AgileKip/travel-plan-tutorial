@@ -17,6 +17,7 @@
                 class="form-control"
                 name="travelName"
                 id="task-hotel-travelName"
+                readonly
                 data-cy="travelName"
                 :class="{
                   valid: !$v.taskContext.travelPlanProcess.travelPlan.travelName.$invalid,
@@ -30,22 +31,9 @@
                 >Start Date</label
               >
               <b-input-group class="mb-3">
-                <b-input-group-prepend>
-                  <b-form-datepicker
-                    aria-controls="task-hotel-startDate"
-                    v-model="$v.taskContext.travelPlanProcess.travelPlan.startDate.$model"
-                    name="startDate"
-                    class="form-control"
-                    :locale="currentLanguage"
-                    button-only
-                    today-button
-                    reset-button
-                    close-button
-                  >
-                  </b-form-datepicker>
-                </b-input-group-prepend>
                 <b-form-input
                   id="task-hotel-startDate"
+                  readonly
                   data-cy="startDate"
                   type="text"
                   class="form-control"
@@ -61,22 +49,9 @@
             <div class="form-group">
               <label class="form-control-label" v-text="$t('travelPlanApp.taskHotel.endDate')" for="task-hotel-endDate">End Date</label>
               <b-input-group class="mb-3">
-                <b-input-group-prepend>
-                  <b-form-datepicker
-                    aria-controls="task-hotel-endDate"
-                    v-model="$v.taskContext.travelPlanProcess.travelPlan.endDate.$model"
-                    name="endDate"
-                    class="form-control"
-                    :locale="currentLanguage"
-                    button-only
-                    today-button
-                    reset-button
-                    close-button
-                  >
-                  </b-form-datepicker>
-                </b-input-group-prepend>
                 <b-form-input
                   id="task-hotel-endDate"
+                  readonly
                   data-cy="endDate"
                   type="text"
                   class="form-control"
@@ -88,23 +63,6 @@
                   v-model="$v.taskContext.travelPlanProcess.travelPlan.endDate.$model"
                 />
               </b-input-group>
-            </div>
-            <div class="form-group">
-              <label class="form-control-label" v-text="$t('travelPlanApp.taskHotel.hotelName')" for="task-hotel-hotelName"
-                >Hotel Name</label
-              >
-              <input
-                type="text"
-                class="form-control"
-                name="hotelName"
-                id="task-hotel-hotelName"
-                data-cy="hotelName"
-                :class="{
-                  valid: !$v.taskContext.travelPlanProcess.travelPlan.hotelName.$invalid,
-                  invalid: $v.taskContext.travelPlanProcess.travelPlan.hotelName.$invalid,
-                }"
-                v-model="$v.taskContext.travelPlanProcess.travelPlan.hotelName.$model"
-              />
             </div>
             <div class="form-group">
               <label
@@ -125,6 +83,29 @@
                 }"
                 v-model="$v.taskContext.travelPlanProcess.travelPlan.hotelBookingNumber.$model"
               />
+            </div>
+            <div class="form-group">
+              <label class="form-control-label" v-text="$t('travelPlanApp.taskHotel.hotel')" for="task-hotel-hotel">Hotel</label>
+              <select
+                class="form-control"
+                id="task-hotel-hotel"
+                data-cy="hotel"
+                name="hotel"
+                v-model="taskContext.travelPlanProcess.travelPlan.hotel"
+              >
+                <option v-bind:value="null"></option>
+                <option
+                  v-bind:value="
+                    taskContext.travelPlanProcess.travelPlan.hotel && hotelOption.id === taskContext.travelPlanProcess.travelPlan.hotel.id
+                      ? taskContext.travelPlanProcess.travelPlan.hotel
+                      : hotelOption
+                  "
+                  v-for="hotelOption in hotels"
+                  :key="hotelOption.id"
+                >
+                  {{ hotelOption.name }}
+                </option>
+              </select>
             </div>
           </template>
         </akip-show-task-instance>

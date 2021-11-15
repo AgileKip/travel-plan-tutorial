@@ -45,18 +45,6 @@
               />
             </div>
             <div class="form-group">
-              <label class="form-control-label" v-text="$t('travelPlanApp.taskCar.carCompanyName')">carCompanyName</label>
-              <input
-                readonly
-                type="text"
-                class="form-control"
-                name="carCompanyName"
-                id="travel-plan-carCompanyName"
-                data-cy="carCompanyName"
-                v-model="taskContext.travelPlanProcess.travelPlan.carCompanyName"
-              />
-            </div>
-            <div class="form-group">
               <label class="form-control-label" v-text="$t('travelPlanApp.taskCar.carBookingNumber')">carBookingNumber</label>
               <input
                 readonly
@@ -66,6 +54,31 @@
                 id="travel-plan-carBookingNumber"
                 data-cy="carBookingNumber"
                 v-model="taskContext.travelPlanProcess.travelPlan.carBookingNumber"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-control-label" v-text="$t('travelPlanApp.taskCar.rentalCarCompany')" for="task-car-rentalCarCompany"
+                >Rental Car Company</label
+              >
+              <input
+                v-if="taskContext.travelPlanProcess.travelPlan.rentalCarCompany"
+                readonly
+                type="text"
+                class="form-control"
+                name="rentalCarCompany"
+                id="travel-plan-rentalCarCompany"
+                data-cy="rentalCarCompany"
+                :value="taskContext.travelPlanProcess.travelPlan.rentalCarCompany.name"
+              />
+              <input
+                v-else
+                readonly
+                type="text"
+                class="form-control"
+                name="rentalCarCompany"
+                id="travel-plan-rentalCarCompany"
+                data-cy="rentalCarCompany"
+                value=""
               />
             </div>
           </template>

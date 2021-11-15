@@ -17,6 +17,7 @@
                 class="form-control"
                 name="travelName"
                 id="task-car-travelName"
+                readonly
                 data-cy="travelName"
                 :class="{
                   valid: !$v.taskContext.travelPlanProcess.travelPlan.travelName.$invalid,
@@ -28,22 +29,9 @@
             <div class="form-group">
               <label class="form-control-label" v-text="$t('travelPlanApp.taskCar.startDate')" for="task-car-startDate">Start Date</label>
               <b-input-group class="mb-3">
-                <b-input-group-prepend>
-                  <b-form-datepicker
-                    aria-controls="task-car-startDate"
-                    v-model="$v.taskContext.travelPlanProcess.travelPlan.startDate.$model"
-                    name="startDate"
-                    class="form-control"
-                    :locale="currentLanguage"
-                    button-only
-                    today-button
-                    reset-button
-                    close-button
-                  >
-                  </b-form-datepicker>
-                </b-input-group-prepend>
                 <b-form-input
                   id="task-car-startDate"
+                  readonly
                   data-cy="startDate"
                   type="text"
                   class="form-control"
@@ -59,22 +47,9 @@
             <div class="form-group">
               <label class="form-control-label" v-text="$t('travelPlanApp.taskCar.endDate')" for="task-car-endDate">End Date</label>
               <b-input-group class="mb-3">
-                <b-input-group-prepend>
-                  <b-form-datepicker
-                    aria-controls="task-car-endDate"
-                    v-model="$v.taskContext.travelPlanProcess.travelPlan.endDate.$model"
-                    name="endDate"
-                    class="form-control"
-                    :locale="currentLanguage"
-                    button-only
-                    today-button
-                    reset-button
-                    close-button
-                  >
-                  </b-form-datepicker>
-                </b-input-group-prepend>
                 <b-form-input
                   id="task-car-endDate"
+                  readonly
                   data-cy="endDate"
                   type="text"
                   class="form-control"
@@ -86,23 +61,6 @@
                   v-model="$v.taskContext.travelPlanProcess.travelPlan.endDate.$model"
                 />
               </b-input-group>
-            </div>
-            <div class="form-group">
-              <label class="form-control-label" v-text="$t('travelPlanApp.taskCar.carCompanyName')" for="task-car-carCompanyName"
-                >Car Company Name</label
-              >
-              <input
-                type="text"
-                class="form-control"
-                name="carCompanyName"
-                id="task-car-carCompanyName"
-                data-cy="carCompanyName"
-                :class="{
-                  valid: !$v.taskContext.travelPlanProcess.travelPlan.carCompanyName.$invalid,
-                  invalid: $v.taskContext.travelPlanProcess.travelPlan.carCompanyName.$invalid,
-                }"
-                v-model="$v.taskContext.travelPlanProcess.travelPlan.carCompanyName.$model"
-              />
             </div>
             <div class="form-group">
               <label class="form-control-label" v-text="$t('travelPlanApp.taskCar.carBookingNumber')" for="task-car-carBookingNumber"
@@ -120,6 +78,32 @@
                 }"
                 v-model="$v.taskContext.travelPlanProcess.travelPlan.carBookingNumber.$model"
               />
+            </div>
+            <div class="form-group">
+              <label class="form-control-label" v-text="$t('travelPlanApp.taskCar.rentalCarCompany')" for="task-car-rentalCarCompany"
+                >Rental Car Company</label
+              >
+              <select
+                class="form-control"
+                id="task-car-rentalCarCompany"
+                data-cy="rentalCarCompany"
+                name="rentalCarCompany"
+                v-model="taskContext.travelPlanProcess.travelPlan.rentalCarCompany"
+              >
+                <option v-bind:value="null"></option>
+                <option
+                  v-bind:value="
+                    taskContext.travelPlanProcess.travelPlan.rentalCarCompany &&
+                    rentalCarCompanyOption.id === taskContext.travelPlanProcess.travelPlan.rentalCarCompany.id
+                      ? taskContext.travelPlanProcess.travelPlan.rentalCarCompany
+                      : rentalCarCompanyOption
+                  "
+                  v-for="rentalCarCompanyOption in rentalCarCompanies"
+                  :key="rentalCarCompanyOption.id"
+                >
+                  {{ rentalCarCompanyOption.name }}
+                </option>
+              </select>
             </div>
           </template>
         </akip-show-task-instance>

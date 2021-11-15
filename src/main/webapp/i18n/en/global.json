@@ -18,6 +18,9 @@
         "taskFlight": "Task Flight",
         "taskHotel": "Task Hotel",
         "taskCar": "Task Car",
+        "airlineCompany": "Airline Company",
+        "hotel": "Hotel",
+        "rentalCarCompany": "Rental Car Company",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

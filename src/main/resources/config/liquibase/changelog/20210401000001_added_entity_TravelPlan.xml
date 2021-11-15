@@ -29,22 +29,22 @@
             <column name="end_date" type="date">
                 <constraints nullable="true" />
             </column>
-            <column name="airline_company_name" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
             <column name="airline_ticket_number" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
-            <column name="hotel_name" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
             <column name="hotel_booking_number" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="car_company_name" type="varchar(255)">
+            <column name="car_booking_number" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
-            <column name="car_booking_number" type="varchar(255)">
+            <column name="airline_company_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="hotel_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="rental_car_company_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->

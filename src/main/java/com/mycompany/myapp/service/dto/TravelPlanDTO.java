@@ -21,17 +21,17 @@ public class TravelPlanDTO implements Serializable {
 
     private LocalDate endDate;
 
-    private String airlineCompanyName;
-
     private String airlineTicketNumber;
-
-    private String hotelName;
 
     private String hotelBookingNumber;
 
-    private String carCompanyName;
-
     private String carBookingNumber;
+
+    private AirlineCompanyDTO airlineCompany;
+
+    private HotelDTO hotel;
+
+    private RentalCarCompanyDTO rentalCarCompany;
 
     public Long getId() {
         return id;
@@ -81,28 +81,12 @@ public class TravelPlanDTO implements Serializable {
         this.endDate = endDate;
     }
 
-    public String getAirlineCompanyName() {
-        return airlineCompanyName;
-    }
-
-    public void setAirlineCompanyName(String airlineCompanyName) {
-        this.airlineCompanyName = airlineCompanyName;
-    }
-
     public String getAirlineTicketNumber() {
         return airlineTicketNumber;
     }
 
     public void setAirlineTicketNumber(String airlineTicketNumber) {
         this.airlineTicketNumber = airlineTicketNumber;
-    }
-
-    public String getHotelName() {
-        return hotelName;
-    }
-
-    public void setHotelName(String hotelName) {
-        this.hotelName = hotelName;
     }
 
     public String getHotelBookingNumber() {
@@ -113,20 +97,36 @@ public class TravelPlanDTO implements Serializable {
         this.hotelBookingNumber = hotelBookingNumber;
     }
 
-    public String getCarCompanyName() {
-        return carCompanyName;
-    }
-
-    public void setCarCompanyName(String carCompanyName) {
-        this.carCompanyName = carCompanyName;
-    }
-
     public String getCarBookingNumber() {
         return carBookingNumber;
     }
 
     public void setCarBookingNumber(String carBookingNumber) {
         this.carBookingNumber = carBookingNumber;
+    }
+
+    public AirlineCompanyDTO getAirlineCompany() {
+        return airlineCompany;
+    }
+
+    public void setAirlineCompany(AirlineCompanyDTO airlineCompany) {
+        this.airlineCompany = airlineCompany;
+    }
+
+    public HotelDTO getHotel() {
+        return hotel;
+    }
+
+    public void setHotel(HotelDTO hotel) {
+        this.hotel = hotel;
+    }
+
+    public RentalCarCompanyDTO getRentalCarCompany() {
+        return rentalCarCompany;
+    }
+
+    public void setRentalCarCompany(RentalCarCompanyDTO rentalCarCompany) {
+        this.rentalCarCompany = rentalCarCompany;
     }
 
     @Override
@@ -160,12 +160,12 @@ public class TravelPlanDTO implements Serializable {
             ", userEmail='" + getUserEmail() + "'" +
             ", startDate='" + getStartDate() + "'" +
             ", endDate='" + getEndDate() + "'" +
-            ", airlineCompanyName='" + getAirlineCompanyName() + "'" +
             ", airlineTicketNumber='" + getAirlineTicketNumber() + "'" +
-            ", hotelName='" + getHotelName() + "'" +
             ", hotelBookingNumber='" + getHotelBookingNumber() + "'" +
-            ", carCompanyName='" + getCarCompanyName() + "'" +
             ", carBookingNumber='" + getCarBookingNumber() + "'" +
+            ", airlineCompany=" + getAirlineCompany() +
+            ", hotel=" + getHotel() +
+            ", rentalCarCompany=" + getRentalCarCompany() +
             "}";
     }
 }

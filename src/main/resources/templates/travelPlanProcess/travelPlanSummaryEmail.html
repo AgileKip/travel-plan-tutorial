@@ -10,9 +10,9 @@
     <ul>
         <li><b>Start</b>: <span th:text="${travelPlan.startDate }"></span></li>
         <li><b>End</b>: <span th:text="${travelPlan.endDate }"></span></li>
-        <li><b>Flight</b>: <span th:text="${travelPlan.airlineCompanyName}"></span> / <span th:text="${travelPlan.airlineTicketNumber}"></span></li>
-        <li><b>Hotel</b>: <span th:text="${travelPlan.hotelName}"></span> / <span th:text="${travelPlan.hotelBookingNumber}"></span></li>
-        <li><b>Rental Car</b>: <span th:text="${travelPlan.carCompanyName}"></span> / <span th:text="${travelPlan.carBookingNumber}"></span></li>
+        <li><b>Flight</b>: <span th:text="${travelPlan.airlineCompany.name}"></span> / <span th:text="${travelPlan.airlineTicketNumber}"></span></li>
+        <li><b>Hotel</b>: <span th:text="${travelPlan.hotel.name}"></span> / <span th:text="${travelPlan.hotelBookingNumber}"></span></li>
+        <li><b>Rental Car</b>: <span th:text="${travelPlan.rentalCarCompany.name}"></span> / <span th:text="${travelPlan.carBookingNumber}"></span></li>
     </ul>
     <p>
       Regards,

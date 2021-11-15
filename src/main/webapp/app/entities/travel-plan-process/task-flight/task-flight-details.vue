@@ -45,18 +45,6 @@
               />
             </div>
             <div class="form-group">
-              <label class="form-control-label" v-text="$t('travelPlanApp.taskFlight.airlineCompanyName')">airlineCompanyName</label>
-              <input
-                readonly
-                type="text"
-                class="form-control"
-                name="airlineCompanyName"
-                id="travel-plan-airlineCompanyName"
-                data-cy="airlineCompanyName"
-                v-model="taskContext.travelPlanProcess.travelPlan.airlineCompanyName"
-              />
-            </div>
-            <div class="form-group">
               <label class="form-control-label" v-text="$t('travelPlanApp.taskFlight.airlineTicketNumber')">airlineTicketNumber</label>
               <input
                 readonly
@@ -66,6 +54,31 @@
                 id="travel-plan-airlineTicketNumber"
                 data-cy="airlineTicketNumber"
                 v-model="taskContext.travelPlanProcess.travelPlan.airlineTicketNumber"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-control-label" v-text="$t('travelPlanApp.taskFlight.airlineCompany')" for="task-flight-airlineCompany"
+                >Airline Company</label
+              >
+              <input
+                v-if="taskContext.travelPlanProcess.travelPlan.airlineCompany"
+                readonly
+                type="text"
+                class="form-control"
+                name="airlineCompany"
+                id="travel-plan-airlineCompany"
+                data-cy="airlineCompany"
+                :value="taskContext.travelPlanProcess.travelPlan.airlineCompany.name"
+              />
+              <input
+                v-else
+                readonly
+                type="text"
+                class="form-control"
+                name="airlineCompany"
+                id="travel-plan-airlineCompany"
+                data-cy="airlineCompany"
+                value=""
               />
             </div>
           </template>

@@ -21,8 +21,8 @@
       "travelName": "Travel Name",
       "startDate": "Start Date",
       "endDate": "End Date",
-      "carCompanyName": "Car Company Name",
-      "carBookingNumber": "Car Booking Number"
+      "carBookingNumber": "Car Booking Number",
+      "rentalCarCompany": "Rental Car Company"
     }
   }
 }

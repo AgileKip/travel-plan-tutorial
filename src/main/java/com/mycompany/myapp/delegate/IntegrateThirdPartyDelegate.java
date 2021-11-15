@@ -29,7 +29,7 @@ public class IntegrateThirdPartyDelegate implements JavaDelegate {
         airlineService.confirmFlight(travelPlanProcess.getTravelPlan().getAirlineTicketNumber());
 
         //Confirming the hotel booking
-        hotelService.confirmReservation(travelPlanProcess.getTravelPlan().getHotelBookingNumber());
+        //hotelService.confirmReservation(travelPlanProcess.getTravelPlan().getHotelBookingNumber());
 
         //Confirming the car booking
         rentCarService.confirmReservation(travelPlanProcess.getTravelPlan().getCarBookingNumber());

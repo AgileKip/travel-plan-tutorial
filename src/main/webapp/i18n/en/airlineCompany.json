@@ -1,0 +1,26 @@
+{
+  "travelPlanApp": {
+    "airlineCompany": {
+      "home": {
+        "title": "Airline Companies",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Airline Company",
+        "createOrEditLabel": "Create or edit a Airline Company",
+        "notFound": "No Airline Companies found"
+      },
+      "created": "A new Airline Company is created with identifier {{ param }}",
+      "updated": "A Airline Company is updated with identifier {{ param }}",
+      "deleted": "A Airline Company is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Airline Company {{ id }}?"
+      },
+      "detail": {
+        "title": "Airline Company"
+      },
+      "id": "ID",
+      "name": "Name",
+      "website": "Website",
+      "email": "Email"
+    }
+  }
+}

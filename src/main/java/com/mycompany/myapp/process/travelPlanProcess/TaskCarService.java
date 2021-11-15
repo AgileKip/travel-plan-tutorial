@@ -9,6 +9,8 @@ import org.akip.repository.TaskInstanceRepository;
 import org.akip.service.TaskInstanceService;
 import org.akip.service.dto.TaskInstanceDTO;
 import org.akip.service.mapper.TaskInstanceMapper;
+import org.camunda.bpm.engine.RuntimeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -28,14 +30,18 @@ public class TaskCarService {
 
     private final TravelPlanProcessMapper travelPlanProcessMapper;
 
+    @Autowired
+    private RuntimeService runtimeService;
+
     public TaskCarService(
-            TaskInstanceService taskInstanceService,
-            TravelPlanService travelPlanService,
-            TaskInstanceRepository taskInstanceRepository,
-            TravelPlanProcessRepository travelPlanProcessRepository,
-            TaskInstanceMapper taskInstanceMapper,
-            TaskCarMapper taskCarMapper,
-            TravelPlanProcessMapper travelPlanProcessMapper) {
+        TaskInstanceService taskInstanceService,
+        TravelPlanService travelPlanService,
+        TaskInstanceRepository taskInstanceRepository,
+        TravelPlanProcessRepository travelPlanProcessRepository,
+        TaskInstanceMapper taskInstanceMapper,
+        TaskCarMapper taskCarMapper,
+        TravelPlanProcessMapper travelPlanProcessMapper
+    ) {
         this.taskInstanceService = taskInstanceService;
         this.travelPlanService = travelPlanService;
         this.taskInstanceRepository = taskInstanceRepository;
@@ -75,17 +81,17 @@ public class TaskCarService {
         travelPlanDTO.setTravelName(taskCarContext.getTravelPlanProcess().getTravelPlan().getTravelName());
         travelPlanDTO.setStartDate(taskCarContext.getTravelPlanProcess().getTravelPlan().getStartDate());
         travelPlanDTO.setEndDate(taskCarContext.getTravelPlanProcess().getTravelPlan().getEndDate());
-        travelPlanDTO.setCarCompanyName(taskCarContext.getTravelPlanProcess().getTravelPlan().getCarCompanyName());
         travelPlanDTO.setCarBookingNumber(taskCarContext.getTravelPlanProcess().getTravelPlan().getCarBookingNumber());
+        travelPlanDTO.setRentalCarCompany(taskCarContext.getTravelPlanProcess().getTravelPlan().getRentalCarCompany());
         travelPlanService.save(travelPlanDTO);
     }
 
     public void complete(TaskCarContextDTO taskCarContext) {
         save(taskCarContext);
         TravelPlanProcessDTO travelPlanProcess = travelPlanProcessRepository
-                .findByProcessInstanceId(taskCarContext.getTravelPlanProcess().getProcessInstance().getId())
-                .map(travelPlanProcessMapper::toDto)
-                .orElseThrow();
+            .findByProcessInstanceId(taskCarContext.getTravelPlanProcess().getProcessInstance().getId())
+            .map(travelPlanProcessMapper::toDto)
+            .orElseThrow();
         taskInstanceService.complete(taskCarContext.getTaskInstance(), travelPlanProcess);
     }
 }
