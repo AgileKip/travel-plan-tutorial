@@ -29,31 +29,31 @@
                 </div>
               </div>
               <div class="card-body py-0">
-                <div class="form-group">
-                  <label class="form-control-label" v-text="$t('travelPlanApp.travelPlanProcess.startDate')">startDate</label>
-                  <input
-                    readonly
-                    type="text"
-                    class="form-control"
-                    name="startDate"
-                    id="travel-plan-startDate"
-                    data-cy="startDate"
-                    v-model="travelPlanProcess.travelPlan.startDate"
-                  />
-                </div>
-              </div>
-              <div class="card-body py-0">
-                <div class="form-group">
-                  <label class="form-control-label" v-text="$t('travelPlanApp.travelPlanProcess.endDate')">endDate</label>
-                  <input
-                    readonly
-                    type="text"
-                    class="form-control"
-                    name="endDate"
-                    id="travel-plan-endDate"
-                    data-cy="endDate"
-                    v-model="travelPlanProcess.travelPlan.endDate"
-                  />
+                <div class="form-group row">
+                  <div class="col-sm">
+                    <label class="form-control-label" v-text="$t('travelPlanApp.travelPlanProcess.startDate')">startDate</label>
+                    <input
+                      readonly
+                      type="text"
+                      class="form-control"
+                      name="startDate"
+                      id="travel-plan-startDate"
+                      data-cy="startDate"
+                      v-model="travelPlanProcess.travelPlan.startDate"
+                    />
+                  </div>
+                  <div class="col-sm">
+                    <label class="form-control-label" v-text="$t('travelPlanApp.travelPlanProcess.endDate')">endDate</label>
+                    <input
+                        readonly
+                        type="text"
+                        class="form-control"
+                        name="endDate"
+                        id="travel-plan-endDate"
+                        data-cy="endDate"
+                        v-model="travelPlanProcess.travelPlan.endDate"
+                    />
+                  </div>
                 </div>
               </div>
               <div class="card-body py-0">

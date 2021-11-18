@@ -11,6 +11,7 @@
             <div class="form-group">
               <label class="form-control-label" v-text="$t('travelPlanApp.taskFlight.name')" for="task-flight-name">Name</label>
               <input
+                  readonly
                 type="text"
                 class="form-control"
                 name="name"
@@ -23,69 +24,73 @@
                 v-model="$v.taskContext.travelPlanProcess.travelPlan.name.$model"
               />
             </div>
-            <div class="form-group">
-              <label class="form-control-label" v-text="$t('travelPlanApp.taskFlight.startDate')" for="task-flight-startDate"
-                >Start Date</label
-              >
-              <b-input-group class="mb-3">
-                <b-input-group-prepend>
-                  <b-form-datepicker
-                    aria-controls="task-flight-startDate"
-                    v-model="$v.taskContext.travelPlanProcess.travelPlan.startDate.$model"
+            <div class="form-group row">
+              <div class="col-sm">
+                <label class="form-control-label" v-text="$t('travelPlanApp.taskFlight.startDate')" for="task-flight-startDate"
+                  >Start Date</label
+                >
+                <b-input-group class="mb-3">
+                  <b-input-group-prepend>
+                    <b-form-datepicker
+                      aria-controls="task-flight-startDate"
+                      v-model="$v.taskContext.travelPlanProcess.travelPlan.startDate.$model"
+                      name="startDate"
+                      class="form-control"
+                      :locale="currentLanguage"
+                      button-only
+                      today-button
+                      reset-button
+                      close-button
+                    >
+                    </b-form-datepicker>
+                  </b-input-group-prepend>
+                  <b-form-input
+                      readonly
+                    id="task-flight-startDate"
+                    data-cy="startDate"
+                    type="text"
+                    class="form-control"
                     name="startDate"
-                    class="form-control"
-                    :locale="currentLanguage"
-                    button-only
-                    today-button
-                    reset-button
-                    close-button
-                  >
-                  </b-form-datepicker>
-                </b-input-group-prepend>
-                <b-form-input
-                  id="task-flight-startDate"
-                  data-cy="startDate"
-                  type="text"
-                  class="form-control"
-                  name="startDate"
-                  :class="{
-                    valid: !$v.taskContext.travelPlanProcess.travelPlan.startDate.$invalid,
-                    invalid: $v.taskContext.travelPlanProcess.travelPlan.startDate.$invalid,
-                  }"
-                  v-model="$v.taskContext.travelPlanProcess.travelPlan.startDate.$model"
-                />
-              </b-input-group>
-            </div>
-            <div class="form-group">
-              <label class="form-control-label" v-text="$t('travelPlanApp.taskFlight.endDate')" for="task-flight-endDate">End Date</label>
-              <b-input-group class="mb-3">
-                <b-input-group-prepend>
-                  <b-form-datepicker
-                    aria-controls="task-flight-endDate"
-                    v-model="$v.taskContext.travelPlanProcess.travelPlan.endDate.$model"
-                    name="endDate"
-                    class="form-control"
-                    :locale="currentLanguage"
-                    button-only
-                    today-button
-                    reset-button
-                    close-button
-                  >
-                  </b-form-datepicker>
-                </b-input-group-prepend>
-                <b-form-input
-                  id="task-flight-endDate"
-                  data-cy="endDate"
-                  type="text"
-                  class="form-control"
-                  name="endDate"
-                  :class="{
+                    :class="{
+                      valid: !$v.taskContext.travelPlanProcess.travelPlan.startDate.$invalid,
+                      invalid: $v.taskContext.travelPlanProcess.travelPlan.startDate.$invalid,
+                    }"
+                    v-model="$v.taskContext.travelPlanProcess.travelPlan.startDate.$model"
+                  />
+                </b-input-group>
+              </div>
+              <div class="col-sm">
+                <label class="form-control-label" v-text="$t('travelPlanApp.taskFlight.endDate')" for="task-flight-endDate">End Date</label>
+                <b-input-group class="mb-3">
+                  <b-input-group-prepend>
+                    <b-form-datepicker
+                        aria-controls="task-flight-endDate"
+                        v-model="$v.taskContext.travelPlanProcess.travelPlan.endDate.$model"
+                        name="endDate"
+                        class="form-control"
+                        :locale="currentLanguage"
+                        button-only
+                        today-button
+                        reset-button
+                        close-button
+                    >
+                    </b-form-datepicker>
+                  </b-input-group-prepend>
+                  <b-form-input
+                      readonly
+                      id="task-flight-endDate"
+                      data-cy="endDate"
+                      type="text"
+                      class="form-control"
+                      name="endDate"
+                      :class="{
                     valid: !$v.taskContext.travelPlanProcess.travelPlan.endDate.$invalid,
                     invalid: $v.taskContext.travelPlanProcess.travelPlan.endDate.$invalid,
                   }"
-                  v-model="$v.taskContext.travelPlanProcess.travelPlan.endDate.$model"
-                />
-              </b-input-group>
+                      v-model="$v.taskContext.travelPlanProcess.travelPlan.endDate.$model"
+                  />
+                </b-input-group>
+              </div>
             </div>
             <div class="form-group">
               <label
