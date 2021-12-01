@@ -1,7 +1,17 @@
 {
   "fields": [
     {
-      "fieldName": "name",
+      "fieldName": "travelPlanName",
+      "fieldType": "String",
+      "fieldReadOnly": true
+    },
+    {
+      "fieldName": "userName",
+      "fieldType": "String",
+      "fieldReadOnly": true
+    },
+    {
+      "fieldName": "userEmail",
       "fieldType": "String",
       "fieldReadOnly": true
     },
