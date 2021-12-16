@@ -337,6 +337,11 @@
             <artifactId>akip-core-community</artifactId>
             <version>2dd4f6c20a81185468a3cb4351831395bd1f9eab</version>
         </dependency>
+        <dependency>
+            <groupId>org.camunda.bpm.springboot</groupId>
+            <artifactId>camunda-bpm-spring-boot-starter-rest</artifactId>
+            <version>${camunda.version}</version>
+        </dependency>
         <!-- jhipster-needle-maven-add-dependency -->
     </dependencies>
 

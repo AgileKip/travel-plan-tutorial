@@ -32,40 +32,40 @@ public class CamundaConfiguration {
         return config;
     }
 
-    @Bean
-    public ProcessEngineFactoryBean processEngineFactory() {
-        ProcessEngineFactoryBean factoryBean = new ProcessEngineFactoryBean();
-        factoryBean.setProcessEngineConfiguration(processEngineConfiguration());
-        return factoryBean;
-    }
-
-    @Bean
-    public RepositoryService repositoryService(ProcessEngine processEngine) {
-        return processEngine.getRepositoryService();
-    }
-
-    @Bean
-    public RuntimeService runtimeService(ProcessEngine processEngine) {
-        return processEngine.getRuntimeService();
-    }
-
-    @Bean
-    public TaskService taskService(ProcessEngine processEngine) {
-        return processEngine.getTaskService();
-    }
-
-    @Bean
-    public CaseService caseService(ProcessEngine processEngine) {
-        return processEngine.getCaseService();
-    }
-
-    @Bean
-    public IdentityService identityService(ProcessEngine processEngine) {
-        return processEngine.getIdentityService();
-    }
-
-    @Bean
-    public HistoryService historyService(ProcessEngine processEngine) {
-        return processEngine.getHistoryService();
-    }
+//    @Bean
+//    public ProcessEngineFactoryBean processEngineFactory() {
+//        ProcessEngineFactoryBean factoryBean = new ProcessEngineFactoryBean();
+//        factoryBean.setProcessEngineConfiguration(processEngineConfiguration());
+//        return factoryBean;
+//    }
+//
+//    @Bean
+//    public RepositoryService repositoryService(ProcessEngine processEngine) {
+//        return processEngine.getRepositoryService();
+//    }
+//
+//    @Bean
+//    public RuntimeService runtimeService(ProcessEngine processEngine) {
+//        return processEngine.getRuntimeService();
+//    }
+//
+//    @Bean
+//    public TaskService taskService(ProcessEngine processEngine) {
+//        return processEngine.getTaskService();
+//    }
+//
+//    @Bean
+//    public CaseService caseService(ProcessEngine processEngine) {
+//        return processEngine.getCaseService();
+//    }
+//
+//    @Bean
+//    public IdentityService identityService(ProcessEngine processEngine) {
+//        return processEngine.getIdentityService();
+//    }
+//
+//    @Bean
+//    public HistoryService historyService(ProcessEngine processEngine) {
+//        return processEngine.getHistoryService();
+//    }
 }
