@@ -4,6 +4,7 @@ import com.mycompany.myapp.repository.TravelPlanProcessRepository;
 import com.mycompany.myapp.service.TravelPlanService;
 import com.mycompany.myapp.service.dto.TravelPlanDTO;
 import com.mycompany.myapp.service.dto.TravelPlanProcessDTO;
+import com.mycompany.myapp.service.mapper.TravelPlanProcessMapper;
 import org.akip.repository.TaskInstanceRepository;
 import org.akip.service.TaskInstanceService;
 import org.akip.service.dto.TaskInstanceDTO;
@@ -25,13 +26,16 @@ public class TaskFlightService {
 
     private final TaskFlightMapper taskFlightMapper;
 
+    private final TravelPlanProcessMapper travelPlanProcessMapper;
+
     public TaskFlightService(
         TaskInstanceService taskInstanceService,
         TravelPlanService travelPlanService,
         TaskInstanceRepository taskInstanceRepository,
         TravelPlanProcessRepository travelPlanProcessRepository,
         TaskInstanceMapper taskInstanceMapper,
-        TaskFlightMapper taskFlightMapper
+        TaskFlightMapper taskFlightMapper,
+        TravelPlanProcessMapper travelPlanProcessMapper
     ) {
         this.taskInstanceService = taskInstanceService;
         this.travelPlanService = travelPlanService;
@@ -39,6 +43,7 @@ public class TaskFlightService {
         this.travelPlanProcessRepository = travelPlanProcessRepository;
         this.taskInstanceMapper = taskInstanceMapper;
         this.taskFlightMapper = taskFlightMapper;
+        this.travelPlanProcessMapper = travelPlanProcessMapper;
     }
 
     public TaskFlightContextDTO loadContext(Long taskInstanceId) {
@@ -78,6 +83,10 @@ public class TaskFlightService {
 
     public void complete(TaskFlightContextDTO taskFlightContext) {
         save(taskFlightContext);
-        taskInstanceService.complete(taskFlightContext.getTaskInstance(), taskFlightContext.getTravelPlanProcess());
+        TravelPlanProcessDTO travelPlanProcess = travelPlanProcessRepository
+            .findByProcessInstanceId(taskFlightContext.getTravelPlanProcess().getProcessInstance().getId())
+            .map(travelPlanProcessMapper::toDto)
+            .orElseThrow();
+        taskInstanceService.complete(taskFlightContext.getTaskInstance(), travelPlanProcess);
     }
 }

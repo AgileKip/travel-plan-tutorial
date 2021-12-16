@@ -15,6 +15,7 @@
                 class="form-control"
                 name="name"
                 id="task-car-name"
+                readonly
                 data-cy="name"
                 :class="{
                   valid: !$v.taskContext.travelPlanProcess.travelPlan.name.$invalid,
@@ -26,22 +27,9 @@
             <div class="form-group">
               <label class="form-control-label" v-text="$t('travelPlanApp.taskCar.startDate')" for="task-car-startDate">Start Date</label>
               <b-input-group class="mb-3">
-                <b-input-group-prepend>
-                  <b-form-datepicker
-                    aria-controls="task-car-startDate"
-                    v-model="$v.taskContext.travelPlanProcess.travelPlan.startDate.$model"
-                    name="startDate"
-                    class="form-control"
-                    :locale="currentLanguage"
-                    button-only
-                    today-button
-                    reset-button
-                    close-button
-                  >
-                  </b-form-datepicker>
-                </b-input-group-prepend>
                 <b-form-input
                   id="task-car-startDate"
+                  readonly
                   data-cy="startDate"
                   type="text"
                   class="form-control"
@@ -57,22 +45,9 @@
             <div class="form-group">
               <label class="form-control-label" v-text="$t('travelPlanApp.taskCar.endDate')" for="task-car-endDate">End Date</label>
               <b-input-group class="mb-3">
-                <b-input-group-prepend>
-                  <b-form-datepicker
-                    aria-controls="task-car-endDate"
-                    v-model="$v.taskContext.travelPlanProcess.travelPlan.endDate.$model"
-                    name="endDate"
-                    class="form-control"
-                    :locale="currentLanguage"
-                    button-only
-                    today-button
-                    reset-button
-                    close-button
-                  >
-                  </b-form-datepicker>
-                </b-input-group-prepend>
                 <b-form-input
                   id="task-car-endDate"
+                  readonly
                   data-cy="endDate"
                   type="text"
                   class="form-control"

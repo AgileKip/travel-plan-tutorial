@@ -15,6 +15,7 @@
                 class="form-control"
                 name="name"
                 id="task-flight-name"
+                readonly
                 data-cy="name"
                 :class="{
                   valid: !$v.taskContext.travelPlanProcess.travelPlan.name.$invalid,
@@ -28,22 +29,9 @@
                 >Start Date</label
               >
               <b-input-group class="mb-3">
-                <b-input-group-prepend>
-                  <b-form-datepicker
-                    aria-controls="task-flight-startDate"
-                    v-model="$v.taskContext.travelPlanProcess.travelPlan.startDate.$model"
-                    name="startDate"
-                    class="form-control"
-                    :locale="currentLanguage"
-                    button-only
-                    today-button
-                    reset-button
-                    close-button
-                  >
-                  </b-form-datepicker>
-                </b-input-group-prepend>
                 <b-form-input
                   id="task-flight-startDate"
+                  readonly
                   data-cy="startDate"
                   type="text"
                   class="form-control"
@@ -59,22 +47,9 @@
             <div class="form-group">
               <label class="form-control-label" v-text="$t('travelPlanApp.taskFlight.endDate')" for="task-flight-endDate">End Date</label>
               <b-input-group class="mb-3">
-                <b-input-group-prepend>
-                  <b-form-datepicker
-                    aria-controls="task-flight-endDate"
-                    v-model="$v.taskContext.travelPlanProcess.travelPlan.endDate.$model"
-                    name="endDate"
-                    class="form-control"
-                    :locale="currentLanguage"
-                    button-only
-                    today-button
-                    reset-button
-                    close-button
-                  >
-                  </b-form-datepicker>
-                </b-input-group-prepend>
                 <b-form-input
                   id="task-flight-endDate"
+                  readonly
                   data-cy="endDate"
                   type="text"
                   class="form-control"
